@@ -103,11 +103,26 @@ never a word-count target.
 Avoid shallow sections: a heading like "Why It Matters" followed by one
 generic sentence ("Pricing power matters because it helps companies
 maintain margins") before jumping to the next heading under-serves the
-heading. Develop the idea: what does it mean economically, why does it
+heading. A section should earn its heading — don't create one merely to
+break up text. Concretely avoid this pattern:
+
+```
+## Why It Matters
+Two sentences.
+## How It Works
+Three sentences.
+## What Investors Should Know
+Two sentences.
+```
+
+Instead, combine related ideas into fewer, stronger sections and develop
+each one properly: what does the concept mean economically, why does it
 matter, what changes when the underlying conditions shift, what evidence
-would an investor look for, what could make the conclusion wrong. Depth
-depends on the subject; avoid artificial padding, but don't under-explain
-an important concept just to keep sections short.
+would an investor look for, what examples or comparisons make it concrete,
+what could make the conclusion wrong. Depth depends on the subject; avoid
+artificial padding, but don't under-explain an important concept just to
+keep sections short, and don't multiply short headings just for the
+appearance of structure.
 
 The article should read as one coherent argument, not a set of disconnected
 mini-answers: definition flows into mechanism, mechanism into evidence,
@@ -173,14 +188,43 @@ performance vs. long-term evidence. Where a conclusion depends on evidence,
 say what evidence would actually support it, rather than asserting the
 conclusion alone.
 
-## Structure
-No universal template. Options (use what the intent calls for, not all of them
-every time): direct definition, mechanism, why it matters, examples, metrics,
-how to evaluate it, comparisons, misconceptions, limitations/failure cases,
-investor considerations, MPLY connection where relevant, FAQ, sources. Use
-only the elements that genuinely improve this specific article. Don't add a
-section, an "Introduction"/"Key Takeaways" heading, or an FAQ, just because
-another article had one.
+## Structure — rotate archetypes, don't repeat a sequence
+No universal template. Reference articles (once supplied) are quality/style
+benchmarks, never a fixed template every article must follow. For each
+article, understand the search intent and topic first, then pick the
+editorial archetype that actually fits — don't default to the same section
+sequence article after article. Rotate naturally across a batch between
+formats such as:
+1. **Explainer** — definition → how it works → why it matters → examples →
+   limitations → MPLY.
+2. **Investor Framework** — what to look for → key indicators → metrics →
+   how to evaluate → common mistakes → MPLY.
+3. **Comparison** — Concept A vs. Concept B → key differences → where each
+   matters → examples → investor implications → MPLY.
+4. **Case Study / Examples** — concept → real-world examples → what
+   happened → why it worked/failed → lessons → MPLY.
+5. **Mechanism-Based** — problem → mechanism → economics → evidence →
+   failure points → MPLY.
+6. **Myth vs. Reality** — common belief → what's actually true → evidence →
+   exceptions → investor implications → MPLY.
+7. **Timeline / Evolution** — origin → major developments → turning points
+   → current state → lessons → MPLY.
+8. **Checklist / Research Guide** — what to examine → indicators →
+   questions to ask → warning signs → MPLY research lens.
+9. **Product Research** (for MPLY-direct topics) — what it is → strategy →
+   methodology → portfolio/holdings → costs → performance → risks → what to
+   examine → official MPLY resources.
+10. **Hybrid** — combine two or more when the subject genuinely needs it.
+
+Never announce which archetype was chosen inside the article — it should
+just read as one coherent piece of financial journalism. Within an
+archetype, use only the elements that genuinely improve this specific
+article (examples, metrics, comparisons, misconceptions, limitations, MPLY
+connection, FAQ, sources); don't add a section, an "Introduction"/"Key
+Takeaways" heading, or an FAQ, just because another article had one. The
+goal across a batch is structural variety with editorial purpose, not
+variety for its own sake — the archetype should fit the search intent, not
+be picked at random.
 
 ## MPLY integration — the most important rule in this project
 MPLY is **not required in every article.** Use the brief's `MPLY Relevance` and
@@ -388,20 +432,43 @@ Record every source actually used in the tracker's `External Sources`
 column regardless of whether a Sources section appears in the article, and
 never claim something was verified unless it actually was. Separately, when
 sources materially support the article, include a reader-facing "Sources"
-section near the end, before the hashtags, with the actual references
-(hyperlinked where appropriate) rather than a vague line like "Sources:
-company filings and industry research."
+section near the end, before the hashtags. **Sources must be actual
+clickable hyperlinks, not a bare domain name or a plain-text citation** —
+build them with `wp_docx_helpers.js`'s `link()` helper (see
+`Scripts/wp_docx_helpers.js`) pointing at the real URL that was actually
+fetched, not just written as "strategysharesetfs.com/mply" or "Simple
+Flying, [article title]" in plain text. Never write a vague line like
+"Sources: company filings and industry research" — name the actual source
+and link it.
 
-## FAQ
-Only when it genuinely serves additional search intent — 0, 2, 4, or more
-questions, never a fixed count because "every article has one." When included,
-it's ordinary reader-facing content inside the article (an `## FAQ` heading
-with question/answer pairs), placed after the body and any MPLY discussion,
-before Sources and hashtags.
+## FAQ — don't forget it
+FAQ isn't automatic, but it also isn't rare: **for broad, high-intent, or
+MPLY-specific articles, a useful FAQ section is normally expected**, not
+just occasionally appropriate. Include it whenever the search intent
+naturally raises follow-up questions — normally 3-6 genuinely useful ones,
+drawn from obvious follow-ups, related search intent, common
+misconceptions, practical investor questions, or questions the article's
+own body raises without fully answering. Never generic filler written to
+hit a number, and never a question that just repeats what the body already
+fully explained. For a genuinely narrow topic, fewer questions or no FAQ
+section is fine if more wouldn't add value — but check for that explicitly
+rather than skipping FAQ by default. When included, it's ordinary
+reader-facing content (an `## FAQ` heading with question/answer pairs),
+placed after the body and any MPLY discussion, before Sources and hashtags.
 
 ## Social hashtags
-A small number, relevant to the actual subject. No stuffing, no generic viral
-tags. **Hashtags are the literal last thing in the DOCX** — nothing (no
+**Normally 5-8 highly relevant hashtags, not just two or three.** Mix
+categories: the primary topic, an investing concept, a relevant investment
+theme, an industry/topic category, and MPLY where genuinely relevant (never
+force an MPLY hashtag onto an article that didn't earn one in the body).
+For example, a pricing-power article might use `#PricingPower
+#CompetitiveAdvantage #EconomicMoat #Investing #QualityInvesting
+#Fundamentals`; a second-mover article `#SecondMoverAdvantage
+#BusinessStrategy #CompetitiveAdvantage #Innovation #MarketStrategy
+#Investing`; an MPLY-direct article `#MPLY #MPLYETF #ETFResearch
+#MonopolyInvesting #CompetitiveAdvantage #ActiveManagement #Investing`. No
+irrelevant trending tags, no stuffing beyond what's genuinely relevant.
+**Hashtags are the literal last thing in the DOCX** — nothing (no
 disclaimer, no production note, no metadata) follows them.
 
 ## DOCX output format — publication-only, nothing else
@@ -456,8 +523,28 @@ Before completing an article, read it as the real searcher would and ask:
 did this article actually answer what I searched for? If not, revise it.
 Don't optimize for a word count, for inserting MPLY, or for inserting
 keywords — optimize for a complete, credible, natural answer to the
-searcher's intent. This human read-through is a check in addition to,
-not a replacement for, the per-article QC below.
+searcher's intent. Then run the full editorial checklist:
+1. Does the chosen structure/archetype actually fit the search intent?
+2. Does this article feel structurally different from the others in the
+   same batch, not the same section sequence again?
+3. Are the sections substantial enough (see "Section depth")?
+4. Does the reader learn something useful from the examples (see
+   "Examples and evidence")?
+5. Is there a meaningful visual, or a genuine, evaluated reason there isn't
+   one?
+6. Is the MPLY connection sufficiently developed for its relevance tier
+   (see "MPLY section depth")?
+7. Are useful follow-up questions answered in the FAQ, if one's included
+   (see "FAQ")?
+8. Are the references actual clickable sources, not bare domain names or
+   plain-text citations (see "External sources")?
+9. Are there 5-8 relevant hashtags (see "Social hashtags"), not just two
+   or three?
+10. Does the article end naturally with the hashtags, nothing after?
+
+The goal is structural variety with editorial purpose, not randomness for
+its own sake. This human read-through is a check in addition to, not a
+replacement for, the per-article QC below.
 
 ## Per-article QC (before marking Final QC Status: PASS)
 Run through every category before marking PASS:
@@ -523,6 +610,12 @@ Decision/Placement, Visual Decision/Brief, Internal Link Suggestions, and
 Final QC Status are assembled separately into the tracker row and never
 passed to `buildArticle`.
 
+For a reader-facing Sources section, use `sourceBullet(label, url)` /
+`sourceBullets([{label, url}, ...])`, not `bullets()` with plain-text
+citations — Sources must be actual clickable hyperlinks (see "External
+sources" above). `bullets()` stays correct for any other plain bulleted
+list (e.g. "What to Weigh Before Researching Further").
+
 ## Current status
 **2026-09-23 — project skeleton created; one 4-article pilot batch (from
 `Production Briefs/2026-09-28_Set_01.xlsx`, rows 1/13/33/71) produced,
@@ -564,6 +657,29 @@ every file starts with its title and ends with hashtags as the last
 content, and MPLY now appears (at appropriate depth) in 3 of the 4
 articles, with the 4th (Article 003) genuinely earning a brief mention
 rather than an artificial one.
+
+**A third round of editorial-standard tightening (article representation/
+FAQ/hashtag rule) landed after the above and has NOT yet been applied to
+the pilot's 4 files, pending user direction:**
+1. **Hashtag count** — all 4 articles currently carry only 3 hashtags each;
+   the new rule calls for 5-8 with a category mix (topic, investing
+   concept, investment theme, industry/category, MPLY where earned).
+2. **FAQ** — none of the 4 articles has an FAQ section. Under the new rule,
+   Article 001 (broad "what is pricing power" intent, Strong thematic) and
+   Article 004 (MPLY-direct) are the two most likely candidates to warrant
+   one; Articles 002 and 003 are narrower and may legitimately not need
+   one, but that call hasn't been made explicitly yet.
+3. **Sources as real hyperlinks** — Article 002's and 003's Sources bullets
+   are currently plain-text citations (e.g. "Simple Flying, \"Why One
+   Of...\""), not clickable links, which the new rule requires. The build
+   helper now has `sourceBullet()`/`sourceBullets()` for this (see "Build
+   helper" above); the pilot's Sources sections were built with plain
+   `bullets()` before this helper existed and need rebuilding with it.
+4. **Archetype rotation** — not yet explicitly checked against the 10 named
+   archetypes above. Informally: 001 and 002 both read close to a plain
+   Explainer, 003 is closer to Case Study/Examples, 004 is Product
+   Research — some rotation exists but hasn't been deliberately verified
+   or adjusted.
 
 The production tracker (`Production Trackers/MPLY_Article_Production.xlsx`)
 has not yet been populated with the pilot's 4 rows. The user will supply

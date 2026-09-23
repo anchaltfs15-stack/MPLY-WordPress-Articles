@@ -59,6 +59,22 @@ function bullets(items) {
   );
 }
 
+// A single reader-facing Sources bullet with an actual clickable hyperlink,
+// e.g. sourceBullet("Simple Flying, \"Why One Of The World's Biggest
+// Airlines Bet Its Future On A Single Aircraft Family\"", "https://...").
+// Never build a Sources bullet as a plain string with bullets() -- a bare
+// domain name or plain-text citation is not a clickable reference.
+function sourceBullet(label, url, opts = {}) {
+  const children = [link(label, url)];
+  if (opts.suffix) children.push(run(opts.suffix));
+  return new Paragraph({ bullet: { level: 0 }, spacing: { after: 100 }, children });
+}
+
+function sourceBullets(items) {
+  // items: [{ label, url, suffix? }, ...]
+  return items.map((it) => sourceBullet(it.label, it.url, { suffix: it.suffix }));
+}
+
 // A reader-facing FAQ entry: bolded question paragraph followed by an answer
 // paragraph. Caller wraps a set of these under an h2("FAQ") only when FAQs
 // genuinely earn their place (see project spec) -- never a fixed count.
@@ -145,4 +161,4 @@ async function buildArticle({ outPath, titleH1, bodyBlocks, hashtags }) {
   console.log("wrote", outPath);
 }
 
-module.exports = { buildArticle, h2, h3, p, link, run, bullets, faqItem, divider, chartImage };
+module.exports = { buildArticle, h2, h3, p, link, run, bullets, sourceBullet, sourceBullets, faqItem, divider, chartImage };
