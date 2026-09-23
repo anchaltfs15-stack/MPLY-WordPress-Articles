@@ -164,6 +164,17 @@ async function main() {
       p(
         "The advantage is not automatic. If the pioneer builds strong network effects, meaning the product gets more valuable as more people use it, or locks customers in through high switching costs, a second mover can arrive with a technically superior product and still lose, because customers have little incentive to switch. Patents and regulatory approvals can also block a second mover from copying the parts of the pioneer's approach that mattered most."
       ),
+      p([
+        run(
+          "That same list, network effects, switching costs, patents, regulatory approvals, is close to what the Strategy Shares Monopoly ETF ("
+        ),
+        run("MPLY", { bold: true }),
+        run(
+          ") screens for when it evaluates whether a company's market position is durable rather than temporary. The fund's process is not concerned with who entered a market first; it is concerned with whether a company's current position would actually survive a well-executed challenger, which is the same question this section is really asking about any pioneer facing a second mover. Readers interested in how a fund weighs that kind of durability can review "
+        ),
+        link("MPLY's investment approach", "https://strategysharesetfs.com/mply/"),
+        run(" on the fund's official page."),
+      ]),
       p(
         "The practical takeaway is that neither position, first or second, guarantees success. What tends to matter more is execution: whether a company can turn the lessons of an earlier entrant, or the ground that entrant already broke, into a genuinely better product, and whether the market's dynamics (network effects, switching costs, patents) leave room for a later arrival to catch up at all."
       ),
