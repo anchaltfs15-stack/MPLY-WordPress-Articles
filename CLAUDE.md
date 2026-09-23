@@ -662,11 +662,11 @@ sources" above). `bullets()` stays correct for any other plain bulleted
 list (e.g. "What to Weigh Before Researching Further").
 
 ## Current status
-**2026-09-28 — 24 of 100 rows in `Production Briefs/2026-09-28_Set_01.xlsx` completed**
-(rows 1-22, plus 33 and 71), all compliant with every rule in this file
+**2026-09-28 — 34 of 100 rows in `Production Briefs/2026-09-28_Set_01.xlsx` completed**
+(rows 1-32, plus 33 and 71), all compliant with every rule in this file
 (publication-only DOCX, adequate MPLY coverage, 5-8 hashtags, hyperlinked
-Sources, archetype variety, FAQ where earned). All 24 rows are logged in
-`Production Trackers/MPLY_Article_Production.xlsx`. 76 rows remain
+Sources, archetype variety, FAQ where earned). All 34 rows are logged in
+`Production Trackers/MPLY_Article_Production.xlsx`. 66 rows remain
 unprocessed in this brief.
 
 **File naming:** `NNN` matches the brief's own `No.` column (zero-padded),
@@ -680,15 +680,27 @@ matching the docx's own heading color) is used by every chart script since
 rows 2-11. The pilot's original 3 charts (articles 001, 013, 033) still use
 the earlier ad hoc blue (`#2E5FA3`) and haven't been restyled retroactively.
 
-**Repetition audit is now a standing per-batch step, not optional:** the
-same reused-CTA-sentence pattern ("Readers can review MPLY's investment
-approach on the fund's official page") reappeared in both the rows-2-11
-batch and the rows-12-22 batch, each time caught by a 7-word n-gram audit
-across every completed article (not just the new batch) before delivery
-and fixed by varying the sentence construction per article. Run this audit
-on the full completed set, not just the new batch, every time — a skeleton
-that only repeats within one batch can still recur if each batch is
-checked in isolation.
+**Repetition audit is a standing per-batch step, run against the full
+completed set, not just the new batch — this has been necessary every
+single batch so far.** The same reused-CTA-sentence pattern ("Readers can
+review MPLY's investment approach on the fund's official page") has
+recurred in three batches in a row (rows 2-11, 12-22, and 23-32), each time
+caught only because the 7-word n-gram audit was run across every completed
+article, not just the newest ten. Treat this as an expected step every
+batch, not a one-off fix: draft the CTA sentence with deliberate variation
+from the start where practical, but always re-run the audit before delivery
+regardless.
+
+**Topical overlap risk increases as the brief progresses**, not just within
+a batch: rows 23-32 revisited switching costs, pricing power, and moat
+identification from new but adjacent angles (mechanism-linking, margin-
+specific, practical-checklist) rather than fresh topics, and required
+deliberately different framings and non-overlapping examples (cloud
+infrastructure, airline fuel surcharges, ROIC-WACC, Sherman Act/Standard
+Oil, Porter's 1980/1985 work, Whole Foods, UPS/NYSE-Nasdaq/Intel, eBay/
+Craigslist) to avoid restating earlier articles under new titles. Check
+each new batch's titles against already-completed ones for this before
+drafting, not just after.
 
 **Standing corrections already folded into the rules above, not repeated
 here:** the MPLY-tag-as-guidance rule (`## MPLY integration`), the
