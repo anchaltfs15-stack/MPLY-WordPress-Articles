@@ -662,12 +662,12 @@ sources" above). `bullets()` stays correct for any other plain bulleted
 list (e.g. "What to Weigh Before Researching Further").
 
 ## Current status
-**2026-09-28 — 14 of 100 rows in `Production Briefs/2026-09-28_Set_01.xlsx` completed** (rows
-1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 33, 71), all compliant with every
-rule in this file (publication-only DOCX, adequate MPLY coverage, 5-8
-hashtags, hyperlinked Sources, archetype variety, FAQ where earned). All
-14 rows are logged in `Production Trackers/MPLY_Article_Production.xlsx`.
-86 rows remain unprocessed in this brief.
+**2026-09-28 — 24 of 100 rows in `Production Briefs/2026-09-28_Set_01.xlsx` completed**
+(rows 1-22, plus 33 and 71), all compliant with every rule in this file
+(publication-only DOCX, adequate MPLY coverage, 5-8 hashtags, hyperlinked
+Sources, archetype variety, FAQ where earned). All 24 rows are logged in
+`Production Trackers/MPLY_Article_Production.xlsx`. 76 rows remain
+unprocessed in this brief.
 
 **File naming:** `NNN` matches the brief's own `No.` column (zero-padded),
 not build order — e.g. row 13 is `013_...docx`, not `002_...docx`. The
@@ -675,11 +675,20 @@ first 4 articles (pilot) were originally misnamed by build order and were
 renamed to match before row 2 onward was processed, to avoid filename
 collisions as the set fills in.
 
-**Chart style guide first applied this batch:** `Scripts/chart_style.py`
-(primary `#1F4E78`, matching the docx's own heading color) is now used by
-every new chart script. The pilot's original 3 charts (articles 001, 013,
-033) still use the earlier ad hoc blue (`#2E5FA3`) and haven't been
-restyled — only new charts have used the shared module so far.
+**Chart style guide:** `Scripts/chart_style.py` (primary `#1F4E78`,
+matching the docx's own heading color) is used by every chart script since
+rows 2-11. The pilot's original 3 charts (articles 001, 013, 033) still use
+the earlier ad hoc blue (`#2E5FA3`) and haven't been restyled retroactively.
+
+**Repetition audit is now a standing per-batch step, not optional:** the
+same reused-CTA-sentence pattern ("Readers can review MPLY's investment
+approach on the fund's official page") reappeared in both the rows-2-11
+batch and the rows-12-22 batch, each time caught by a 7-word n-gram audit
+across every completed article (not just the new batch) before delivery
+and fixed by varying the sentence construction per article. Run this audit
+on the full completed set, not just the new batch, every time — a skeleton
+that only repeats within one batch can still recur if each batch is
+checked in isolation.
 
 **Standing corrections already folded into the rules above, not repeated
 here:** the MPLY-tag-as-guidance rule (`## MPLY integration`), the
