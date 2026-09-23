@@ -3,3 +3,6 @@ __pycache__/
 .DS_Store
 ~$*
 *.tmp
+node_modules/
+**/render/
+*.pdf
