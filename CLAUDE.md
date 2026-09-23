@@ -662,84 +662,33 @@ sources" above). `bullets()` stays correct for any other plain bulleted
 list (e.g. "What to Weigh Before Researching Further").
 
 ## Current status
-**2026-09-23 — project skeleton created; one 4-article pilot batch (from
-`Production Briefs/2026-09-28_Set_01.xlsx`, rows 1/13/33/71) produced,
-approved for content/voice, regenerated in the publication-only DOCX format,
-and revised against the full editorial standard.** All four articles now
-comply with every rule in this file:
-- **Article 001** ("What Is Pricing Power") gained a substantial,
-  multi-paragraph "Why MPLY Treats Pricing Power as a Core Signal" section
-  (Strong thematic relevance, per the MPLY section depth rule), naming
-  Nvidia and Apple as verified current top holdings whose pricing behavior
-  illustrates the screen, plus a Sources section. No visual: evaluated, but
-  no verified numeric dataset supports one for this topic, so the honest
-  call was "no chart" rather than a fabricated one.
-- **Article 002** ("What Is a Cost Advantage Moat") replaced vague examples
-  ("discount retailers," "low-cost airlines") with named, researched ones
-  (Walmart, Costco, Southwest Airlines' single-737-fleet strategy, sourced
-  to Simple Flying), and added an illustrative (clearly labeled, not
-  company-specific) economies-of-scale chart.
-- **Article 003** ("What Is a Second Mover Advantage") replaced its vague
-  "a dominant one emerged" language with three researched, named, dated
-  examples (AltaVista 1995 to Google 1998; Myspace 2003 to Facebook 2004;
-  IBM Simon 1994 to iPhone 2007), a factual pioneer-vs-second-mover
-  timeline chart, and a Sources section citing the articles used. The brief
-  tagged this row Indirect/Omit, but on review the article's own "When
-  Being Second Does Not Work" section already turned on network effects,
-  switching costs, patents, and regulatory approvals, the same category of
-  durable barrier MPLY's own screen is built to identify, so a brief,
-  specific MPLY paragraph was added there rather than treating "Indirect"
-  as a hard omit. This is the mirror case of the Article 001 correction:
-  the brief's `MPLY Relevance`/`MPLY Placement` tags are a starting point,
-  not a ceiling or a floor. Always check whether the article's own content
-  independently surfaces one of MPLY's actual screening criteria before
-  finalizing an Omit decision.
-- **Article 004** ("What Is MPLY ETF") was already compliant (Primary
-  Subject, verified holdings chart, Sources section) and is unchanged.
+**2026-09-28 — 14 of 100 rows in `Production Briefs/2026-09-28_Set_01.xlsx` completed** (rows
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 33, 71), all compliant with every
+rule in this file (publication-only DOCX, adequate MPLY coverage, 5-8
+hashtags, hyperlinked Sources, archetype variety, FAQ where earned). All
+14 rows are logged in `Production Trackers/MPLY_Article_Production.xlsx`.
+86 rows remain unprocessed in this brief.
 
-Verified after rebuild: 0 em dashes, 0 banned production-metadata strings,
-every file starts with its title and ends with hashtags as the last
-content, and MPLY now appears (at appropriate depth) in 3 of the 4
-articles, with the 4th (Article 003) genuinely earning a brief mention
-rather than an artificial one.
+**File naming:** `NNN` matches the brief's own `No.` column (zero-padded),
+not build order — e.g. row 13 is `013_...docx`, not `002_...docx`. The
+first 4 articles (pilot) were originally misnamed by build order and were
+renamed to match before row 2 onward was processed, to avoid filename
+collisions as the set fills in.
 
-**A third round of editorial-standard tightening (article representation/
-FAQ/hashtag rule) landed after the above and has now been fully applied to
-the pilot's 4 files:**
-1. **Hashtag count** — fixed: all 4 now carry 6-7 hashtags, category-mixed
-   (topic, investing concept, investment theme, industry/category, MPLY
-   only where the article gave it substantive treatment: 001 and 004).
-2. **FAQ** — added to Article 001 (4 Q&A: not-just-expensive, margin vs.
-   inflation pass-through, pricing power ≠ proof of a moat, can it be
-   lost) and Article 004 (4 Q&A: ticker meaning, "is it a good
-   investment" answered honestly by declining to recommend, active vs.
-   passive, fund-specific risks). Explicitly decided against one for
-   Articles 002 and 003: both are narrower, example-driven topics where
-   the body already answers the likely follow-ups, so an FAQ would be
-   filler rather than genuine value.
-3. **Sources as real hyperlinks** — fixed: every Sources section across all
-   4 articles now uses `sourceBullet()`/`sourceBullets()`, verified by
-   inspecting each docx's `word/_rels/document.xml.rels` for the actual
-   `https://` targets (strategysharesetfs.com, stockanalysis.com,
-   simpleflying.com, cybercultural.com, en.wikipedia.org, pcworld.com,
-   appleinsider.com, simpletexting.com — all real URLs actually fetched
-   during research, not invented).
-4. **Archetype rotation** — fixed: Article 002 was reframed from a
-   near-duplicate of Article 001's Explainer shape into a genuine
-   Investor Framework ("What to Look For" → three named signals → "Where
-   These Signals Show Up" → "The Question That Actually Tests
-   Durability," explicitly naming the common mistake). Content/facts
-   unchanged, only the framing and section sequence. Final rotation: 001
-   Explainer, 002 Investor Framework, 003 Case Study/Examples, 004
-   Product Research — four distinct archetypes, verified, not just
-   asserted.
+**Chart style guide first applied this batch:** `Scripts/chart_style.py`
+(primary `#1F4E78`, matching the docx's own heading color) is now used by
+every new chart script. The pilot's original 3 charts (articles 001, 013,
+033) still use the earlier ad hoc blue (`#2E5FA3`) and haven't been
+restyled — only new charts have used the shared module so far.
 
-Verified after this rebuild: still 0 em dashes, 0 banned metadata strings,
-hashtags still the final content in every file. Word counts now
-1194/609/810/810 (001 grew with its FAQ; still no filler — every added
-paragraph answers a real, distinct question).
+**Standing corrections already folded into the rules above, not repeated
+here:** the MPLY-tag-as-guidance rule (`## MPLY integration`), the
+adequate-coverage-means-explanation rule (same section), and the
+publication-only DOCX format all trace back to specific fixes made across
+the pilot batch and this one. See git history for the detailed narrative
+if needed; this section stays current-state only so it doesn't grow
+unbounded as more batches complete.
 
-The production tracker (`Production Trackers/MPLY_Article_Production.xlsx`)
-has not yet been populated with the pilot's 4 rows. The user will supply
-further keyword brief file(s) in the `Production Briefs/_TEMPLATE_Set_XX.xlsx`
-format as needed.
+The user will supply further keyword brief files in the
+`Production Briefs/_TEMPLATE_Set_XX.xlsx` format as needed, or give the
+go-ahead to continue through the remaining rows of this same brief.
