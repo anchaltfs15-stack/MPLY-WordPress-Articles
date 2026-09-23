@@ -1,29 +1,15 @@
 const {
   Document, Packer, Paragraph, TextRun, HeadingLevel, ExternalHyperlink,
-  AlignmentType, BorderStyle, Bookmark, ImageRun,
+  AlignmentType, BorderStyle, ImageRun,
 } = require("docx");
 const fs = require("fs");
 
 const FONT = "Georgia";
 
-function label(text) {
-  return new Paragraph({
-    spacing: { before: 200, after: 60 },
-    children: [new TextRun({ text, bold: true, font: FONT, size: 20, color: "444444" })],
-  });
-}
-
-function meta(text) {
-  return new Paragraph({
-    spacing: { after: 200 },
-    children: [new TextRun({ text, italics: true, font: FONT, size: 22 })],
-  });
-}
-
 function h1(text) {
   return new Paragraph({
     heading: HeadingLevel.HEADING_1,
-    spacing: { before: 240, after: 200 },
+    spacing: { before: 0, after: 200 },
     children: [new TextRun({ text, font: FONT, bold: true, size: 32 })],
   });
 }
@@ -33,6 +19,14 @@ function h2(text) {
     heading: HeadingLevel.HEADING_2,
     spacing: { before: 260, after: 140 },
     children: [new TextRun({ text, font: FONT, bold: true, size: 26 })],
+  });
+}
+
+function h3(text) {
+  return new Paragraph({
+    heading: HeadingLevel.HEADING_3,
+    spacing: { before: 220, after: 120 },
+    children: [new TextRun({ text, font: FONT, bold: true, size: 24 })],
   });
 }
 
@@ -63,6 +57,19 @@ function bullets(items) {
         children: [new TextRun({ text: t, font: FONT, size: 23 })],
       })
   );
+}
+
+// A reader-facing FAQ entry: bolded question paragraph followed by an answer
+// paragraph. Caller wraps a set of these under an h2("FAQ") only when FAQs
+// genuinely earn their place (see project spec) -- never a fixed count.
+function faqItem(question, answer) {
+  return [
+    new Paragraph({
+      spacing: { before: 160, after: 60 },
+      children: [new TextRun({ text: question, bold: true, font: FONT, size: 23 })],
+    }),
+    p(answer),
+  ];
 }
 
 function chartImage(imgPath, { widthIn = 6, caption } = {}) {
@@ -102,81 +109,25 @@ function divider() {
   });
 }
 
-function sectionHeading(text) {
-  return new Paragraph({
-    spacing: { before: 100, after: 120 },
-    children: [new TextRun({ text, bold: true, font: FONT, size: 24, color: "1F4E78" })],
-  });
-}
+// Publication-only DOCX: title, body (which the caller composes to include
+// any MPLY discussion / FAQ / Sources naturally, as ordinary article
+// content), then the hashtags line as the last thing in the document.
+// No SEO Title / Meta Description labels, no production-metadata section,
+// no MPLY-decision labels, no visual-decision labels, no internal-link
+// block, no disclaimer boilerplate. All of that (SEO Title, Meta
+// Description, MPLY Decision/Placement, Visual Decision/Brief, Internal
+// Link Suggestions, External Sources, Final QC Status) is tracker-only:
+// write it to Production Trackers/MPLY_Article_Production.xlsx as its own
+// row, never pass it to this function.
+async function buildArticle({ outPath, titleH1, bodyBlocks, hashtags }) {
+  const children = [h1(titleH1), ...bodyBlocks];
 
-async function buildArticle({
-  outPath,
-  seoTitle,
-  metaDescription,
-  titleH1,
-  bodyBlocks, // array of Paragraph
-  mply, // null or { decision, placement, note }
-  visual, // { decision: 'Yes'|'No', brief: string|null }
-  internalLinks, // array of strings
-  externalSources, // array of strings
-  hashtags, // array of strings
-}) {
-  const children = [];
-
-  children.push(label("SEO Title"));
-  children.push(p(seoTitle));
-
-  children.push(label("Meta Description"));
-  children.push(p(metaDescription));
-
-  children.push(label("Article"));
-  children.push(h1(titleH1));
-  children.push(...bodyBlocks);
-
-  children.push(new Paragraph({ pageBreakBefore: true, children: [] }));
   children.push(
     new Paragraph({
-      spacing: { after: 300 },
-      children: [
-        new TextRun({
-          text: "PRODUCTION METADATA (not part of the published article)",
-          bold: true,
-          italics: true,
-          font: FONT,
-          size: 22,
-          color: "888888",
-        }),
-      ],
+      spacing: { before: 280, after: 0 },
+      children: [new TextRun({ text: hashtags.join(" "), font: FONT, size: 22, color: "1F4E78" })],
     })
   );
-
-  children.push(sectionHeading("MPLY Section / Placement"));
-  if (mply) {
-    children.push(p(`MPLY Decision: ${mply.decision}`));
-    children.push(p(`Placement: ${mply.placement}`));
-    children.push(p(mply.note));
-  } else {
-    children.push(p("MPLY Decision: Omit. No MPLY mention in this article."));
-  }
-
-  children.push(sectionHeading("Visual Decision"));
-  children.push(p(`Visual Decision: ${visual.decision}`));
-  if (visual.decision === "Yes" && visual.brief) {
-    children.push(p(visual.brief));
-  }
-
-  children.push(sectionHeading("Internal Link Suggestions"));
-  if (internalLinks && internalLinks.length) {
-    children.push(...bullets(internalLinks));
-  } else {
-    children.push(p("None."));
-  }
-
-  children.push(sectionHeading("External Sources"));
-  children.push(...bullets(externalSources));
-
-  children.push(sectionHeading("Social Hashtags"));
-  children.push(p(hashtags.join(" ")));
 
   const doc = new Document({
     sections: [
@@ -190,8 +141,8 @@ async function buildArticle({
   });
 
   const buf = await Packer.toBuffer(doc);
-  require("fs").writeFileSync(outPath, buf);
+  fs.writeFileSync(outPath, buf);
   console.log("wrote", outPath);
 }
 
-module.exports = { buildArticle, h2, p, link, run, bullets, divider, chartImage };
+module.exports = { buildArticle, h2, h3, p, link, run, bullets, faqItem, divider, chartImage };

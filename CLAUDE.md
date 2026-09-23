@@ -119,8 +119,11 @@ copy to reproduce verbatim — write an article-specific connection instead.
 across articles. Ask: why is MPLY relevant to *this* article specifically? If
 there's no genuine connection, the correct outcome is:
 
-**MPLY Decision: Omit** — this is a valid, expected, and preferred outcome over
-a forced connection. A forced mention damages article quality and reader trust.
+**MPLY Decision: Omit** (recorded in the tracker, never written into the DOCX
+itself — see "DOCX output format" below) — this is a valid, expected, and
+preferred outcome over a forced connection. A forced mention damages article
+quality and reader trust. When MPLY is included, it must read as ordinary
+editorial content woven into the article, never as a labeled section.
 
 ### MPLY placement (per brief's `MPLY Placement` field)
 - **No MPLY** — don't mention it.
@@ -168,46 +171,82 @@ same generic risk block into every piece. A conceptual article's risks relate to
 the concept (e.g. pricing power: customer resistance, competitive response,
 regulation, substitution, demand elasticity); an MPLY-specific article's risks
 are fund-level (liquidity, short track record, small-fund closure risk, etc.).
+State risk facts plainly as part of the article's own analysis; never append a
+generic boilerplate disclaimer (see "Disclaimers" below).
+
+## Disclaimers — do not auto-append
+Never append a generic disclaimer to an article just because it's financial
+content: no "Educational content only, not investment advice," no "Investing
+involves risk, including possible loss of principal," no "Read the prospectus
+and consider objectives, risks, charges and expenses before investing," no
+boilerplate of that kind. Neutral, non-recommending language (see "Investment
+language" above) is what keeps the article appropriate, not a disclaimer
+paragraph. Only include disclaimer language if the user explicitly supplies it
+as a project requirement for a specific batch.
 
 ## Visuals
 Claude decides per article, not as a default. Only include one when it genuinely
 improves understanding (comparison table, framework/process diagram, timeline,
-flowchart, verified-data chart). Never invent numbers to produce a chart. State
-`Visual Decision: Yes/No`, and a concise, designer-usable brief when Yes.
+flowchart, verified-data chart). Never invent numbers to produce a chart. If
+included, the chart/table appears directly in the article as ordinary content
+(with a normal caption, not a labeled production field). The decision itself
+(`Visual Decision: Yes/No`) and the designer-usable brief go in the tracker,
+not the DOCX.
 
 ## Internal links
 Only when a genuine contextual relationship exists. Use real URLs if available in
-this project's files; otherwise give suggested anchor text + target article title,
-never an invented URL. Don't force a link into every article.
+this project's files; otherwise give suggested anchor text + target article title
+in the tracker (never an invented URL). Don't force a link into every article. A
+suggested internal link is tracker-only unless a real destination URL exists, in
+which case it may be incorporated as a natural hyperlink directly in the article
+text.
 
-## External sources
-Record only sources actually used, real citations only, no fabricated ones.
+## External sources / reader-facing Sources section
+Record every source actually used in the tracker's `External Sources` column,
+real citations only, never fabricated. Separately, if the article genuinely
+benefits from a reader-facing "Sources" or "Further Reading" section (for
+example, a fact readers would want to verify themselves), add it directly in
+the article, right before the hashtags — only sources actually used, never a
+generic list appended by default.
 
 ## FAQ
 Only when it genuinely serves additional search intent — 0, 2, 4, or more
-questions, never a fixed count because "every article has one."
+questions, never a fixed count because "every article has one." When included,
+it's ordinary reader-facing content inside the article (an `## FAQ` heading
+with question/answer pairs), placed after the body and any MPLY discussion,
+before Sources and hashtags.
 
 ## Social hashtags
 A small number, relevant to the actual subject. No stuffing, no generic viral
-tags.
+tags. **Hashtags are the literal last thing in the DOCX** — nothing (no
+disclaimer, no production note, no metadata) follows them.
 
-## DOCX output format
+## DOCX output format — publication-only, nothing else
 File naming: `NNN_Short_Article_Title.docx` (zero-padded 3-digit number).
-Each DOCX contains, in this order:
-1. **SEO Title**
-2. **Meta Description**
-3. **Article** (complete, publication-ready — no AI/production commentary
-   inside it, e.g. never "As an AI...", "This article was generated...",
-   "According to your content brief...")
-4. **MPLY Section / Placement** (production metadata, only if MPLY is relevant —
-   states where the connection appears and why)
-5. **Visual Decision** (+ Visual Brief if Yes)
-6. **Internal Link Suggestions**
-7. **External Sources**
-8. **Social Hashtags**
 
-Items 1-3 are publication content; 4-8 are production metadata, clearly separated
-from the article itself.
+**The DOCX contains only what a reader/publisher should see.** No labels, no
+production commentary, no metadata of any kind. Structure:
+
+1. **Article title** — the article heading itself (an H1), never prefixed with
+   "Article", "Title:", or any label.
+2. **Article body** — H2/H3 sections as the search intent actually calls for.
+3. **MPLY discussion**, if genuinely relevant — woven into the body as normal
+   editorial content, not a separate labeled section, not introduced by any
+   "MPLY Section" or "MPLY Decision" heading.
+4. **FAQ**, if genuinely useful — plain `## FAQ` heading with question/answer
+   pairs.
+5. **Sources**, if genuinely useful — plain `## Sources` heading, reader-facing
+   citations only.
+6. **Social hashtags** — the final line of the document. Nothing follows it.
+
+**Never write any of the following into a DOCX:** an "SEO Title" or "Meta
+Description" label/value pair, "PRODUCTION METADATA" or any similar banner,
+"MPLY Decision: ...", "MPLY Section / Placement", "Visual Decision: ...",
+"Visual Brief", "Internal Link Suggestions", "Final QC Status", production
+notes, editor/publisher instructions, AI-generation notices ("This article was
+generated...", "According to your content brief..."), or a generic investment
+disclaimer. All of that belongs only in the production tracker (see below);
+build scripts must never pass it into the DOCX-writing step.
 
 ## Production tracker (Production Trackers/MPLY_Article_Production.xlsx)
 One row per article, columns:
@@ -216,6 +255,15 @@ Related Terms | Content Cluster | Search Intent | MPLY Relevance | MPLY
 Connection Logic | SEO Title | Meta Description | MPLY Decision | MPLY Placement
 | Visual Decision | Visual Brief | Internal Link Suggestions | External Sources |
 Social Hashtags | Article DOCX Filename | Final QC Status | Notes`
+
+**This is the only place SEO Title, Meta Description, MPLY Decision/Placement,
+Visual Decision/Brief, Internal Link Suggestions, and Final QC Status live.**
+None of them belong in the DOCX. Keep these three layers separate and never
+mix them:
+- **Input brief** = what to write + SEO/MPLY guidance.
+- **Article DOCX** = the publication-ready article, for the reader/publisher.
+- **Production tracker** = SEO + MPLY + visual + source + QC metadata, for the
+  production team.
 
 Always append new sets; never delete or overwrite prior rows. Preserve the
 original brief fields even after an article is finished.
@@ -227,16 +275,25 @@ phrases, no em dash; factual claims and current facts verified, sources genuine;
 MPLY genuinely relevant (not forced), connection specific to this article, not
 reused verbatim from a prior one, official URL only; no investment
 recommendations made; visual (if any) uses only verified data; internal/external
-links genuine, no invented URLs; DOCX exists and is recorded in the tracker with
-the correct Set number. Anything unresolved → `Final QC Status: NEEDS REVIEW`
-with the issue explained in Notes, not PASS.
+links genuine, no invented URLs. **Plus the DOCX-purity checks:** article
+begins with the title itself (no "SEO Title"/"Meta Description" label, no
+"Article" label); no production-metadata banner or section anywhere in the
+file; no "MPLY Decision"/"MPLY Section / Placement" text; no "Visual Decision"
+text; no "Internal Link Suggestions" block; no generic disclaimer; hashtags
+present and are the literal last content in the document, nothing after them.
+DOCX exists and is recorded in the tracker with the correct Set number.
+Anything unresolved → `Final QC Status: NEEDS REVIEW` with the issue explained
+in Notes, not PASS.
 
 ## Batch completion check (after processing a full set)
 Row count in = article count out. Every row has a DOCX, every DOCX is in the
 tracker, every article has a QC status, nothing silently skipped, no duplicates,
 MPLY not force-inserted, sources recorded, no invented URLs, no em dashes
-anywhere, tracker preserves all previously completed sets. If numbers don't
-match, find the discrepancy before calling the batch done.
+anywhere, no article contains production metadata, no article contains a
+generic disclaimer unless explicitly required for that batch, every article
+ends with hashtags and nothing after them, tracker preserves all previously
+completed sets. If numbers don't match, find the discrepancy before calling
+the batch done.
 
 ## Final production summary (after each batch)
 Report: input file processed, date, set number, articles processed, DOCX files
@@ -244,7 +301,25 @@ created, MPLY-included count, MPLY-omitted count, articles needing review,
 tracker created/updated. Don't paste full article text into chat once DOCX files
 exist — the files are the deliverable.
 
+## Build helper
+`Scripts/wp_docx_helpers.js` (`buildArticle`) writes publication-only DOCX
+output: title, body, hashtags, nothing else. It takes `{ outPath, titleH1,
+bodyBlocks, hashtags }` — no `seoTitle`, `metaDescription`, `mply`, `visual`,
+or `internalLinks` parameters exist on it (an earlier version had them and
+wrote them into the DOCX as labeled sections; that version is superseded).
+Any MPLY discussion, FAQ, or Sources section is composed by the caller into
+`bodyBlocks` as ordinary article content; SEO Title, Meta Description, MPLY
+Decision/Placement, Visual Decision/Brief, Internal Link Suggestions, and
+Final QC Status are assembled separately into the tracker row and never
+passed to `buildArticle`.
+
 ## Current status
-**2026-09-23 — project skeleton just created, no articles produced yet.** The
-user will supply their own keyword brief file(s) in the
-`Production Briefs/_TEMPLATE_Set_XX.xlsx` format before production starts.
+**2026-09-23 — project skeleton created; one 4-article pilot batch produced
+and approved for content/voice, but built under an earlier DOCX format that
+included production-metadata labels and an SEO Title/Meta Description header
+in the file itself.** That format is now superseded by the publication-only
+format specified above (title → body → optional MPLY/FAQ/Sources → hashtags,
+nothing else, all metadata tracker-only). The pilot DOCX files were not
+regenerated as part of this format update; the next batch built should use
+the corrected format. The user will supply further keyword brief file(s) in
+the `Production Briefs/_TEMPLATE_Set_XX.xlsx` format as needed.
