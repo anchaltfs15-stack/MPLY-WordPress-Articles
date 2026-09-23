@@ -232,6 +232,19 @@ MPLY is **not required in every article.** Use the brief's `MPLY Relevance` and
 `MPLY Connection Logic` is guidance for understanding the relationship, never
 copy to reproduce verbatim — write an article-specific connection instead.
 
+**Adequate coverage means genuine explanation, not a mention count.** A
+nonzero MPLY mention count is not sufficient QC on its own. Before calling
+an article done, read the actual MPLY sentence(s): does it explain a
+specific mechanism connecting the topic to one of MPLY's real screening
+criteria (brand dominance, regulatory exclusivity, industry concentration,
+barriers to entry, pricing power, supply-chain control, network effects,
+protected IP), or is it a name-drop, a throwaway trailing clause like
+"...including MPLY, frame their own screening process" that names MPLY
+without explaining anything? This exact failure mode slipped through twice
+in the pilot batch even after other MPLY-depth fixes had already landed —
+see the standing memory note on this. Check every MPLY sentence for
+substance, not just presence, in every batch.
+
 **Do not** reuse the same MPLY paragraph, the same "Where MPLY Connects to
 [Topic]" heading, the same characteristics list, or the same risk paragraph
 across articles. Ask: why is MPLY relevant to *this* article specifically? If
@@ -405,6 +418,36 @@ The decision (`Visual Decision: Yes/No`) and the designer-usable brief go in
 the tracker; the visual itself (if Yes) appears directly in the article as
 ordinary content with a normal caption, never a labeled production field.
 
+### Chart and visual style guide — one consistent look, not ad hoc per chart
+Every chart in this project uses a single shared visual style, not colors
+and fonts picked independently inside each chart script. The pilot batch's
+first charts used an ad hoc blue (`#2E5FA3`) that didn't match the docx
+template's own heading color; that's the mistake this section exists to
+prevent.
+
+- **Primary accent color:** `#1F4E78` (the same blue already used for H2
+  headings and the "Sources"/hashtag styling in `wp_docx_helpers.js`), so
+  text and visuals read as one product. Use a muted gray (`#8A9199`) for
+  secondary/annotation elements, consistent with existing chart captions.
+- **Typography:** a clean sans-serif for chart titles/labels/legends
+  (distinct from the docx body's Georgia serif — sans-serif holds up
+  better at small chart label sizes). Use matplotlib's default sans-serif
+  (DejaVu Sans) unless the user specifies an actual brand font.
+- **Consistency:** every chart built through one shared style module,
+  `Scripts/chart_style.py` — import its constants/helpers rather than
+  hardcoding hex colors or font choices in each new chart script.
+- **Technical minimums:** 200+ DPI, consistent figure sizing (default
+  8x5in) and margins, consistent caption placement and styling (italic,
+  muted gray, below the chart) so a reader doesn't feel a style shift
+  between articles.
+- **Palette validation:** run any categorical (multi-hue) palette through
+  the `dataviz` skill's `validate_palette.js` before shipping, even though
+  most charts here are single-hue and don't need it.
+
+If the user supplies an actual MPLY brand palette or font, that supersedes
+`#1F4E78`/DejaVu Sans as the default and this section should be updated to
+match.
+
 ## Internal links
 Only when a genuine contextual relationship exists. Use real URLs if available in
 this project's files; otherwise give suggested anchor text + target article title
@@ -558,9 +601,11 @@ Run through every category before marking PASS:
 - **MPLY** — Is the relevance decision correct for this topic? If Strong
   thematic, is there a substantive, multi-paragraph MPLY section (not one
   sentence)? Does it explain the specific connection rather than reusing
-  MPLY's boilerplate description? Does it read as useful, not promotional?
-  Is the official MPLY link included where it makes sense, with non-
-  aggressive CTA language?
+  MPLY's boilerplate description? **For every tier, including Moderate and
+  a brief mention: read the actual MPLY sentence(s) — is it a real,
+  specific mechanism, or a name-drop/throwaway clause?** Does it read as
+  useful, not promotional? Is the official MPLY link included where it
+  makes sense, with non-aggressive CTA language?
 - **Evidence** — Are factual claims supported? Are named examples sourced?
   Are current MPLY figures verified against `MPLY Information/` or the
   official source? Are URLs real, not invented?
