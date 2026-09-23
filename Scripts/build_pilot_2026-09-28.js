@@ -13,9 +13,6 @@ async function main() {
   // ------------------------------------------------------------------
   await buildArticle({
     outPath: path.join(OUT, "001_What_Is_Pricing_Power.docx"),
-    seoTitle: "What Is Pricing Power? Why It Matters for Investors",
-    metaDescription:
-      "Pricing power lets a company raise prices without losing customers. Here's how it works, how to spot it, and why investors track it closely.",
     titleH1: "What Is Pricing Power and Why It Matters for Investors",
     bodyBlocks: [
       p(
@@ -43,23 +40,6 @@ async function main() {
         "Durable pricing power, sustained over many years and multiple price increases, is a different and rarer thing than a single successful price hike. That durability is part of what separates a business with a genuine competitive advantage from one simply benefiting from a temporary supply shortage or a one-time product cycle. It is also one of the characteristics that actively managed funds screening for monopolistic or oligopolistic business traits, such as the MPLY ETF, look for when evaluating whether a company's advantage is likely to hold up over time."
       ),
     ],
-    mply: {
-      decision: "Brief Mention",
-      placement: "Brief Mention",
-      note:
-        "One sentence in the closing paragraph connects sustained pricing power to the type of durable-advantage screening MPLY performs, without a dedicated section or heading. Matches the brief's 'Strong thematic / Brief Mention' guidance.",
-    },
-    visual: {
-      decision: "No",
-      brief: null,
-    },
-    internalLinks: [
-      "Anchor: 'economic moat' -> Target article: What Is a Competitive Moat in Investing",
-      "Anchor: 'switching costs' -> Target article: What Are Switching Costs and Why Do They Matter",
-    ],
-    externalSources: [
-      "Concepts described (demand elasticity, gross margin analysis) reflect standard microeconomic and equity-analysis framing; no proprietary data or statistics were cited.",
-    ],
     hashtags: ["#PricingPower", "#InvestingBasics", "#CompetitiveAdvantage"],
   });
 
@@ -68,9 +48,6 @@ async function main() {
   // ------------------------------------------------------------------
   await buildArticle({
     outPath: path.join(OUT, "002_What_Is_a_Cost_Advantage_Moat.docx"),
-    seoTitle: "What Is a Cost Advantage Moat in Investing?",
-    metaDescription:
-      "A cost advantage moat lets a company underprice competitors and still turn a profit. Learn how it forms, real examples, and its limits.",
     titleH1: "What Is a Cost Advantage Moat",
     bodyBlocks: [
       p(
@@ -95,22 +72,6 @@ async function main() {
         "That is why investors and analysts typically look past whether a cost advantage exists at all and ask how it was built, and whether a well-capitalized competitor could replicate it within a few years. Cost efficiency by itself is common; cost efficiency that is genuinely hard to copy is rarer, and it's that second, durability-focused question that overlaps with how funds built around identifying durable competitive advantages, including MPLY, frame their own screening process."
       ),
     ],
-    mply: {
-      decision: "Brief Mention",
-      placement: "Brief Mention",
-      note:
-        "A single closing-paragraph sentence ties the durability question back to advantage-screening funds generally, naming MPLY once, without overstating relevance for a moderate-fit topic. Matches the brief's 'Moderate / Brief Mention' guidance.",
-    },
-    visual: {
-      decision: "No",
-      brief: null,
-    },
-    internalLinks: [
-      "Anchor: 'economies of scale' -> Target article: Economic Moat Examples: How Durable Advantages Work",
-    ],
-    externalSources: [
-      "General cost-structure and moat-durability framing follows standard equity-research practice; no proprietary statistics were cited.",
-    ],
     hashtags: ["#EconomicMoat", "#CostAdvantage", "#InvestingBasics"],
   });
 
@@ -119,9 +80,6 @@ async function main() {
   // ------------------------------------------------------------------
   await buildArticle({
     outPath: path.join(OUT, "003_What_Is_a_Second_Mover_Advantage.docx"),
-    seoTitle: "What Is a Second Mover Advantage in Business?",
-    metaDescription:
-      "Being first to market isn't always the winning move. Here's how second movers use a pioneer's mistakes to build a stronger, longer-lasting business.",
     titleH1: "What Is a Second Mover Advantage",
     bodyBlocks: [
       p(
@@ -146,18 +104,6 @@ async function main() {
         "The practical takeaway is that neither position, first or second, guarantees success. What tends to matter more is execution: whether a company can turn the lessons of an earlier entrant, or the ground that entrant already broke, into a genuinely better product, and whether the market's dynamics (network effects, switching costs, patents) leave room for a later arrival to catch up at all."
       ),
     ],
-    mply: null,
-    visual: {
-      decision: "No",
-      brief: null,
-    },
-    internalLinks: [
-      "Anchor: 'network effects' -> Target article: Economic Moat Examples: How Durable Advantages Work",
-      "Anchor: 'switching costs' -> Target article: What Are Switching Costs and Why Do They Matter",
-    ],
-    externalSources: [
-      "Historical pattern of later entrants overtaking early pioneers in search, social networking, and smartphones is widely documented business history; no specific performance statistics or company financials were cited.",
-    ],
     hashtags: ["#BusinessStrategy", "#CompetitiveAdvantage", "#Innovation"],
   });
 
@@ -166,9 +112,6 @@ async function main() {
   // ------------------------------------------------------------------
   await buildArticle({
     outPath: path.join(OUT, "004_What_Is_MPLY_ETF.docx"),
-    seoTitle: "What Is MPLY ETF? Strategy Shares Monopoly ETF Explained",
-    metaDescription:
-      "MPLY is an actively managed ETF that screens for companies with monopoly-like traits. Here's what it holds, what it costs, and how it's built.",
     titleH1: "What Is MPLY ETF",
     bodyBlocks: [
       p([
@@ -185,7 +128,7 @@ async function main() {
         'MPLY\'s stated methodology looks for brand dominance, regulatory exclusivity, industry concentration, a history of antitrust scrutiny, monopolistic or oligopolistic economic rents, high barriers to market entry, pricing power, vertical integration and control of the supply chain, benefits from network effects, and protected intellectual property or patents. A company does not need every trait; the fund considers businesses that hold these characteristics individually, effectively a monopoly, or collectively with a small number of competitors, effectively an oligopoly.'
       ),
       h2("Fund Basics"),
-      p([run("MPLY launched on May 15, 2025, giving it a track record of roughly a year as of late 2026. That is a meaningfully shorter operating history than most established equity ETFs, and it means the fund has not yet been tested through a full market cycle, including a sustained downturn.", {})]),
+      p("MPLY launched on May 15, 2025, giving it a track record of roughly a year as of late 2026. That is a meaningfully shorter operating history than most established equity ETFs, and it means the fund has not yet been tested through a full market cycle, including a sustained downturn."),
       p([
         run("The fund carries an expense ratio of 0.79%, both gross and net, and had roughly "),
         run("$18 million", { bold: true }),
@@ -220,25 +163,11 @@ async function main() {
           " directly through the issuer's site, which publishes current holdings, performance, and fund documents."
         ),
       ]),
-    ],
-    mply: {
-      decision: "Primary Subject",
-      placement: "Primary Subject",
-      note:
-        "MPLY is the article's subject. All fund facts (inception date, expense ratio, AUM, holdings count, top-10 concentration, trailing return) were verified against the official issuer page (strategysharesetfs.com/mply) on 2026-09-23 and cross-checked against stockanalysis.com; see MPLY Information/mply_fund_facts.md. No investment recommendation made; risk factors (short track record, concentration, small AUM) stated plainly rather than as a caveat.",
-    },
-    visual: {
-      decision: "Yes",
-      brief:
-        "Simple horizontal bar chart of MPLY's top 10 holdings by portfolio weight (NVDA 10.65%, GOOG 9.31%, AAPL 9.21%, MSFT 8.15%, AMZN 6.04%, TSM 5.01%, SPCX 4.84%, META 3.96%, AVGO 3.82%, TSLA 3.40%), sourced from stockanalysis.com (2026-09-23), with a caption noting these ten holdings represent about 64% of total fund assets. Purpose: let the reader see concentration at a glance rather than read ten percentages in a sentence. Design note: sort bars descending by weight; label each bar with ticker and percentage; no color-coding needed beyond a single accent color.",
-    },
-    internalLinks: [
-      "Anchor: 'competitive moat' -> Target article: What Is a Competitive Moat in Investing",
-      "Anchor: 'pricing power' -> Target article: What Is Pricing Power and Why It Matters for Investors",
-    ],
-    externalSources: [
-      "https://strategysharesetfs.com/mply/ (official issuer page: inception date, expense ratio, AUM, trailing return, screening methodology; fetched 2026-09-23)",
-      "https://stockanalysis.com/etf/mply/ (secondary verification: holdings count, top-10 weights, AUM cross-check; fetched 2026-09-23)",
+      h2("Sources"),
+      ...bullets([
+        "Strategy Shares Monopoly ETF official fund page: strategysharesetfs.com/mply",
+        "stockanalysis.com/etf/mply (holdings breakdown and secondary data verification)",
+      ]),
     ],
     hashtags: ["#MPLY", "#ETFResearch", "#ActiveManagement"],
   });
