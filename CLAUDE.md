@@ -659,27 +659,40 @@ articles, with the 4th (Article 003) genuinely earning a brief mention
 rather than an artificial one.
 
 **A third round of editorial-standard tightening (article representation/
-FAQ/hashtag rule) landed after the above and has NOT yet been applied to
-the pilot's 4 files, pending user direction:**
-1. **Hashtag count** — all 4 articles currently carry only 3 hashtags each;
-   the new rule calls for 5-8 with a category mix (topic, investing
-   concept, investment theme, industry/category, MPLY where earned).
-2. **FAQ** — none of the 4 articles has an FAQ section. Under the new rule,
-   Article 001 (broad "what is pricing power" intent, Strong thematic) and
-   Article 004 (MPLY-direct) are the two most likely candidates to warrant
-   one; Articles 002 and 003 are narrower and may legitimately not need
-   one, but that call hasn't been made explicitly yet.
-3. **Sources as real hyperlinks** — Article 002's and 003's Sources bullets
-   are currently plain-text citations (e.g. "Simple Flying, \"Why One
-   Of...\""), not clickable links, which the new rule requires. The build
-   helper now has `sourceBullet()`/`sourceBullets()` for this (see "Build
-   helper" above); the pilot's Sources sections were built with plain
-   `bullets()` before this helper existed and need rebuilding with it.
-4. **Archetype rotation** — not yet explicitly checked against the 10 named
-   archetypes above. Informally: 001 and 002 both read close to a plain
-   Explainer, 003 is closer to Case Study/Examples, 004 is Product
-   Research — some rotation exists but hasn't been deliberately verified
-   or adjusted.
+FAQ/hashtag rule) landed after the above and has now been fully applied to
+the pilot's 4 files:**
+1. **Hashtag count** — fixed: all 4 now carry 6-7 hashtags, category-mixed
+   (topic, investing concept, investment theme, industry/category, MPLY
+   only where the article gave it substantive treatment: 001 and 004).
+2. **FAQ** — added to Article 001 (4 Q&A: not-just-expensive, margin vs.
+   inflation pass-through, pricing power ≠ proof of a moat, can it be
+   lost) and Article 004 (4 Q&A: ticker meaning, "is it a good
+   investment" answered honestly by declining to recommend, active vs.
+   passive, fund-specific risks). Explicitly decided against one for
+   Articles 002 and 003: both are narrower, example-driven topics where
+   the body already answers the likely follow-ups, so an FAQ would be
+   filler rather than genuine value.
+3. **Sources as real hyperlinks** — fixed: every Sources section across all
+   4 articles now uses `sourceBullet()`/`sourceBullets()`, verified by
+   inspecting each docx's `word/_rels/document.xml.rels` for the actual
+   `https://` targets (strategysharesetfs.com, stockanalysis.com,
+   simpleflying.com, cybercultural.com, en.wikipedia.org, pcworld.com,
+   appleinsider.com, simpletexting.com — all real URLs actually fetched
+   during research, not invented).
+4. **Archetype rotation** — fixed: Article 002 was reframed from a
+   near-duplicate of Article 001's Explainer shape into a genuine
+   Investor Framework ("What to Look For" → three named signals → "Where
+   These Signals Show Up" → "The Question That Actually Tests
+   Durability," explicitly naming the common mistake). Content/facts
+   unchanged, only the framing and section sequence. Final rotation: 001
+   Explainer, 002 Investor Framework, 003 Case Study/Examples, 004
+   Product Research — four distinct archetypes, verified, not just
+   asserted.
+
+Verified after this rebuild: still 0 em dashes, 0 banned metadata strings,
+hashtags still the final content in every file. Word counts now
+1194/609/810/810 (001 grew with its FAQ; still no filler — every added
+paragraph answers a real, distinct question).
 
 The production tracker (`Production Trackers/MPLY_Article_Production.xlsx`)
 has not yet been populated with the pilot's 4 rows. The user will supply

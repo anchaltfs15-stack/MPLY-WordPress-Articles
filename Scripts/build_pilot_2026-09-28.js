@@ -1,5 +1,5 @@
 const path = require("path");
-const { buildArticle, h2, p, link, run, bullets, chartImage } = require("./wp_docx_helpers");
+const { buildArticle, h2, p, link, run, bullets, chartImage, faqItem, sourceBullets } = require("./wp_docx_helpers");
 
 const OUT = path.join(
   "C:", "Users", "SrimanNarayan", "OneDrive - TransForm Solutions (P) Limited",
@@ -71,10 +71,27 @@ async function main() {
           " on the fund's official page."
         ),
       ]),
+      h2("FAQ"),
+      ...faqItem(
+        "Is pricing power just another way of saying a company is expensive?",
+        "No. Pricing power is about the ability to raise prices without losing customers, not about the price level itself. A budget retailer with strong pricing power can still raise prices modestly and keep customers; a premium brand with weak pricing power can lose customers the moment it pushes prices higher, regardless of how expensive it already is."
+      ),
+      ...faqItem(
+        "How can I tell if a price increase reflects pricing power or just inflation pass-through?",
+        "Watch what happens to gross margin, not just revenue. If a company raises prices in step with rising input costs and margins hold flat, that is closer to inflation pass-through, keeping up rather than gaining ground. Real pricing power usually shows up as margin expansion: revenue grows faster than the cost of what's being sold, meaning the company captured more than it needed to just to stay even."
+      ),
+      ...faqItem(
+        "Does pricing power on its own prove a company has a durable moat?",
+        "No, and this is a common mistake. Pricing power is evidence a moat might exist, not proof of one. A company can show pricing power briefly because of a temporary shortage or a one-off product cycle. What separates a real moat from a lucky moment is whether the pricing power persists across multiple price increases and multiple years, and whether it is backed by something structural, like switching costs, a patent, or genuine brand loyalty."
+      ),
+      ...faqItem(
+        "Can a company lose pricing power it once had?",
+        "Yes. Regulation can cap what a utility or pharmaceutical company charges. A well-capitalized competitor can undercut a premium brand. A recession can push loyal customers toward cheaper alternatives once household budgets tighten. Pricing power is a current condition, not a permanent trait, which is why durability over time matters more than any single price increase."
+      ),
       h2("Sources"),
-      ...bullets([
-        "Strategy Shares Monopoly ETF official fund page (screening criteria, current holdings): strategysharesetfs.com/mply",
-        "stockanalysis.com/etf/mply (holdings weights, fetched 2026-09-23)",
+      ...sourceBullets([
+        { label: "Strategy Shares Monopoly ETF official fund page (screening criteria, current holdings)", url: "https://strategysharesetfs.com/mply/" },
+        { label: "stockanalysis.com/etf/mply (holdings weights, fetched 2026-09-23)", url: "https://stockanalysis.com/etf/mply/" },
       ]),
     ],
     hashtags: ["#PricingPower", "#CompetitiveAdvantage", "#EconomicMoat", "#MPLY", "#Investing", "#QualityInvesting", "#Fundamentals"],
@@ -88,36 +105,33 @@ async function main() {
     titleH1: "What Is a Cost Advantage Moat",
     bodyBlocks: [
       p(
-        "A cost advantage moat exists when a company can produce or deliver a product for meaningfully less than its competitors, and use that gap either to undercut rivals on price or to earn a fatter margin at the same price. It is one of the more common types of competitive advantage, and one of the easier ones to measure, because it shows up directly in unit economics."
+        "A cost advantage moat exists when a company can produce or deliver a product for meaningfully less than its competitors, and use that gap either to undercut rivals on price or to earn a fatter margin at the same price. It is one of the more common types of competitive advantage, and one of the easier ones for an investor to test, because unlike brand strength or switching costs, it shows up directly in unit economics rather than requiring a judgment call."
       ),
-      h2("How a Cost Advantage Forms"),
+      h2("What to Look For"),
       p(
-        "Scale is the most familiar driver. A retailer with thousands of stores can negotiate better terms from suppliers than a regional chain can. A chipmaker running its factories at higher utilization spreads fixed costs over more units. Proprietary process or technology is another route: a company that has spent years refining a manufacturing process may simply produce more efficiently than a competitor trying to catch up from scratch."
-      ),
-      p(
-        "Access to cheaper inputs matters too. A company with a long-term contract locking in lower raw material costs, or with a logistics network built years ago at lower cost than a new entrant could replicate today, carries a structural cost edge that has nothing to do with current operational skill."
+        "Three structural signals tend to separate a real cost advantage from a company that simply runs efficient operations this quarter. The first is scale: a retailer with thousands of stores can negotiate supplier terms a regional chain cannot match, and a chipmaker running factories at higher utilization spreads fixed costs over more units. The second is proprietary process, a company that has spent years refining a manufacturing method may produce more efficiently than a competitor trying to catch up from scratch. The third is locked-in access to cheaper inputs: a long-term contract on raw materials, or a logistics network built years ago at a cost a new entrant could not replicate today."
       ),
       ...chartImage(
         path.join(OUT, "charts", "002_economies_of_scale.png"),
-        { widthIn: 6, caption: "A conceptual illustration of how fixed costs spread over more units as volume grows; not derived from any specific company's figures." }
+        { widthIn: 6, caption: "The first signal in practice: a conceptual illustration of how fixed costs spread over more units as volume grows. Not derived from any specific company's figures." }
       ),
-      h2("Cost Advantage Moat in Practice"),
+      h2("Where These Signals Show Up"),
       p(
-        "Walmart is the standard reference case for purchasing-scale cost advantage: its size lets it negotiate supplier terms that a regional chain cannot match, and that gap shows up directly in everyday shelf prices. Costco takes a related but distinct approach, using a membership-fee model to run merchandise at thin, sometimes near-breakeven margins while the fee itself carries the profit, which lets it undercut competitors that need to price for margin on every item sold."
-      ),
-      p(
-        "Southwest Airlines is the clearer example on the operating side. Since its founding, it has flown a single aircraft family, the Boeing 737, rather than a mixed fleet. That choice simplifies pilot and mechanic training, lets crews and aircraft be swapped between routes without aircraft-specific requalification, and speeds up how quickly a plane can be turned around at the gate. The airline has said the practice saves hundreds of millions of dollars a year compared with operating a mixed fleet, the kind of structural cost gap that is hard for a competitor to close without rebuilding its own fleet strategy from scratch."
-      ),
-      h2("Why This Moat Type Is Often Fragile"),
-      p(
-        "Cost advantages can erode faster than advantages built on brand or switching costs. A competitor that scales up eventually captures similar purchasing power. A new manufacturing technology can wipe out years of process refinement overnight. And a pure cost advantage, without something else layered on top of it such as a distribution network or brand recognition, invites a price war that can compress margins for everyone in the industry, including the low-cost leader."
+        "Walmart is the standard reference case for the scale signal: its size lets it negotiate supplier terms that a regional chain cannot match, and that gap shows up directly in everyday shelf prices. Costco illustrates a related but distinct version, using a membership-fee model to run merchandise at thin, sometimes near-breakeven margins while the fee itself carries the profit, which lets it undercut competitors that need to price for margin on every item sold."
       ),
       p(
-        "That is why investors and analysts typically look past whether a cost advantage exists at all and ask how it was built, and whether a well-capitalized competitor could replicate it within a few years. Cost efficiency by itself is common; cost efficiency that is genuinely hard to copy is rarer, and it's that second, durability-focused question that overlaps with how funds built around identifying durable competitive advantages, including MPLY, frame their own screening process."
+        "Southwest Airlines is the clearer example of the proprietary-process signal. Since its founding, it has flown a single aircraft family, the Boeing 737, rather than a mixed fleet. That choice simplifies pilot and mechanic training, lets crews and aircraft be swapped between routes without aircraft-specific requalification, and speeds up how quickly a plane can be turned around at the gate. The airline has said the practice saves hundreds of millions of dollars a year compared with operating a mixed fleet, the kind of structural cost gap that is hard for a competitor to close without rebuilding its own fleet strategy from scratch."
+      ),
+      h2("The Question That Actually Tests Durability"),
+      p(
+        "The common mistake is stopping at confirming a cost advantage exists and treating that as the same thing as confirming a moat. Cost advantages can erode faster than advantages built on brand or switching costs: a competitor that scales up eventually captures similar purchasing power, and a new manufacturing technology can wipe out years of process refinement overnight. A pure cost advantage, without something else layered on top of it such as a distribution network or brand recognition, also invites a price war that compresses margins for everyone in the industry, including the low-cost leader."
+      ),
+      p(
+        "The evaluation question that actually separates a durable advantage from a temporary one is whether a well-capitalized competitor could replicate it within a few years. Cost efficiency by itself is common; cost efficiency that is genuinely hard to copy is rarer, and it's that second, durability-focused question that overlaps with how funds built around identifying durable competitive advantages, including MPLY, frame their own screening process."
       ),
       h2("Sources"),
-      ...bullets([
-        "Southwest Airlines single-fleet strategy and its reported cost savings: Simple Flying, \"Why One Of The World's Biggest Airlines Bet Its Future On A Single Aircraft Family\" (simpleflying.com)",
+      ...sourceBullets([
+        { label: "Simple Flying, \"Why One Of The World's Biggest Airlines Bet Its Future On A Single Aircraft Family\" (Southwest Airlines single-fleet strategy and reported cost savings)", url: "https://simpleflying.com/why-worlds-biggest-airline-bet-future-single-aircraft-family/" },
       ]),
     ],
     hashtags: ["#CostAdvantageMoat", "#EconomicMoat", "#CompetitiveAdvantage", "#Investing", "#ValueInvesting", "#Fundamentals"],
@@ -179,10 +193,12 @@ async function main() {
         "The practical takeaway is that neither position, first or second, guarantees success. What tends to matter more is execution: whether a company can turn the lessons of an earlier entrant, or the ground that entrant already broke, into a genuinely better product, and whether the market's dynamics (network effects, switching costs, patents) leave room for a later arrival to catch up at all."
       ),
       h2("Sources"),
-      ...bullets([
-        "AltaVista launch and Google's rise, including 2001 search share: Cybercultural, \"Search Engines in 1998, Before Google Takes the Spotlight,\" and Wikipedia, \"AltaVista\"",
-        "Facebook overtaking Myspace in 2008-2009: PCWorld, \"Facebook Overtakes MySpace in U.S.\"",
-        "IBM Simon (1994) and the iPhone's June 2007 launch: AppleInsider, \"The story of the original iPhone, that nobody thought was possible,\" and SimpleTexting, \"Smartphone history\"",
+      ...sourceBullets([
+        { label: "Cybercultural, \"Search Engines in 1998, Before Google Takes the Spotlight\" (AltaVista launch, Google's rise)", url: "https://cybercultural.com/p/search-1998/" },
+        { label: "Wikipedia, \"AltaVista\" (founding date, 2001 search share, acquisition and shutdown)", url: "https://en.wikipedia.org/wiki/AltaVista" },
+        { label: "PCWorld, \"Facebook Overtakes MySpace in U.S.\"", url: "https://www.pcworld.com/article/523618/facebook_overtakes_myspace_in_us.html" },
+        { label: "AppleInsider, \"The story of the original iPhone, that nobody thought was possible\" (iPhone's June 2007 launch)", url: "https://appleinsider.com/articles/18/06/29/the-story-of-the-original-iphone-that-nobody-thought-was-possible" },
+        { label: "SimpleTexting, \"Smartphone history\" (IBM Simon, 1994)", url: "https://simpletexting.com/blog/where-have-we-come-since-the-first-smartphone/" },
       ]),
     ],
     hashtags: ["#SecondMoverAdvantage", "#BusinessStrategy", "#CompetitiveAdvantage", "#Innovation", "#MarketStrategy", "#Investing"],
@@ -244,10 +260,27 @@ async function main() {
           " directly through the issuer's site, which publishes current holdings, performance, and fund documents."
         ),
       ]),
+      h2("FAQ"),
+      ...faqItem(
+        "What does the MPLY ticker stand for?",
+        "MPLY is the exchange ticker for the Strategy Shares Monopoly ETF, named for the fund's focus on companies with monopoly-like, or in some cases oligopoly-like, market positions rather than any reference to the board game."
+      ),
+      ...faqItem(
+        "Is MPLY a good investment?",
+        "That isn't a question this article can answer, and no article honestly can: it depends on an individual investor's goals, time horizon, and risk tolerance, and MPLY has a short public track record to evaluate against. What can be said is factual: the fund is actively managed, concentrated in its largest holdings, and carries a higher expense ratio and shorter history than many established ETFs, all of which are relevant to weigh, not reasons to buy or avoid it on their own."
+      ),
+      ...faqItem(
+        "How is MPLY different from a passive index ETF?",
+        "A passive index ETF tracks a fixed set of rules, typically weighting companies by market capitalization within a defined index. MPLY does not track a published index; its managers actively select and adjust holdings based on the fund's stated Monopolistic Attributes criteria, which means performance depends on the manager's ongoing judgment rather than a mechanical formula."
+      ),
+      ...faqItem(
+        "What are the main risks specific to MPLY?",
+        "Three stand out from currently available information: a short operating history with no full market cycle yet observed, concentration risk from roughly two-thirds of assets sitting in its ten largest holdings, and lower trading liquidity than an investor would find in a larger, more established ETF."
+      ),
       h2("Sources"),
-      ...bullets([
-        "Strategy Shares Monopoly ETF official fund page: strategysharesetfs.com/mply",
-        "stockanalysis.com/etf/mply (holdings breakdown and secondary data verification)",
+      ...sourceBullets([
+        { label: "Strategy Shares Monopoly ETF official fund page (inception date, expense ratio, AUM, trailing return, screening methodology)", url: "https://strategysharesetfs.com/mply/" },
+        { label: "stockanalysis.com/etf/mply (holdings breakdown and secondary data verification)", url: "https://stockanalysis.com/etf/mply/" },
       ]),
     ],
     hashtags: ["#MPLY", "#MPLYETF", "#ETFResearch", "#MonopolyInvesting", "#CompetitiveAdvantage", "#ActiveManagement", "#Investing"],
