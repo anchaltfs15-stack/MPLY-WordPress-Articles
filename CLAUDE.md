@@ -199,6 +199,21 @@ preferred outcome over a forced connection. A forced mention damages article
 quality and reader trust. When MPLY is included, it must read as ordinary
 editorial content woven into the article, never as a labeled section.
 
+**The brief's `MPLY Relevance`/`MPLY Placement` tags are a starting point,
+not a ceiling or a floor.** Before finalizing either an Omit or a one-line
+Brief Mention, check whether the article's own content independently turns
+on one of MPLY's actual screening criteria (brand dominance, regulatory
+exclusivity, industry concentration, barriers to entry, pricing power,
+supply-chain control, network effects, protected IP). If it does, even on a
+row tagged Indirect or Moderate, that's a genuine connection worth a brief,
+specific paragraph, not an artificial one — found in Article 003 ("Second
+Mover Advantage," tagged Indirect/Omit, but the article's own "When Being
+Second Does Not Work" section already discussed network effects, switching
+costs, patents, and regulatory approvals, MPLY's own screening categories).
+The reverse also applies: a "Strong thematic" tag doesn't excuse a
+one-sentence treatment (see "MPLY section depth" below). Let the article's
+actual content decide, with the brief's tags as guidance in both directions.
+
 ### MPLY placement (per brief's `MPLY Placement` field)
 - **No MPLY** — don't mention it.
 - **Brief Mention** — a short contextual reference.
@@ -530,13 +545,25 @@ comply with every rule in this file:
   "a dominant one emerged" language with three researched, named, dated
   examples (AltaVista 1995 to Google 1998; Myspace 2003 to Facebook 2004;
   IBM Simon 1994 to iPhone 2007), a factual pioneer-vs-second-mover
-  timeline chart, and a Sources section citing the articles used.
+  timeline chart, and a Sources section citing the articles used. The brief
+  tagged this row Indirect/Omit, but on review the article's own "When
+  Being Second Does Not Work" section already turned on network effects,
+  switching costs, patents, and regulatory approvals, the same category of
+  durable barrier MPLY's own screen is built to identify, so a brief,
+  specific MPLY paragraph was added there rather than treating "Indirect"
+  as a hard omit. This is the mirror case of the Article 001 correction:
+  the brief's `MPLY Relevance`/`MPLY Placement` tags are a starting point,
+  not a ceiling or a floor. Always check whether the article's own content
+  independently surfaces one of MPLY's actual screening criteria before
+  finalizing an Omit decision.
 - **Article 004** ("What Is MPLY ETF") was already compliant (Primary
   Subject, verified holdings chart, Sources section) and is unchanged.
 
 Verified after rebuild: 0 em dashes, 0 banned production-metadata strings,
 every file starts with its title and ends with hashtags as the last
-content. Word counts: 886 / 583 / 713 / 549.
+content, and MPLY now appears (at appropriate depth) in 3 of the 4
+articles, with the 4th (Article 003) genuinely earning a brief mention
+rather than an artificial one.
 
 The production tracker (`Production Trackers/MPLY_Article_Production.xlsx`)
 has not yet been populated with the pilot's 4 rows. The user will supply
