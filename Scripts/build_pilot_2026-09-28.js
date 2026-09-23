@@ -101,7 +101,7 @@ async function main() {
   // Article 002 (brief No. 13) — Moderate / Brief Mention
   // ------------------------------------------------------------------
   await buildArticle({
-    outPath: path.join(OUT, "002_What_Is_a_Cost_Advantage_Moat.docx"),
+    outPath: path.join(OUT, "013_What_Is_a_Cost_Advantage_Moat.docx"),
     titleH1: "What Is a Cost Advantage Moat",
     bodyBlocks: [
       p(
@@ -112,7 +112,7 @@ async function main() {
         "Three structural signals tend to separate a real cost advantage from a company that simply runs efficient operations this quarter. The first is scale: a retailer with thousands of stores can negotiate supplier terms a regional chain cannot match, and a chipmaker running factories at higher utilization spreads fixed costs over more units. The second is proprietary process, a company that has spent years refining a manufacturing method may produce more efficiently than a competitor trying to catch up from scratch. The third is locked-in access to cheaper inputs: a long-term contract on raw materials, or a logistics network built years ago at a cost a new entrant could not replicate today."
       ),
       ...chartImage(
-        path.join(OUT, "charts", "002_economies_of_scale.png"),
+        path.join(OUT, "charts", "013_economies_of_scale.png"),
         { widthIn: 6, caption: "The first signal in practice: a conceptual illustration of how fixed costs spread over more units as volume grows. Not derived from any specific company's figures." }
       ),
       h2("Where These Signals Show Up"),
@@ -153,7 +153,7 @@ async function main() {
   // Article 003 (brief No. 33) — Indirect / None (MPLY fully omitted)
   // ------------------------------------------------------------------
   await buildArticle({
-    outPath: path.join(OUT, "003_What_Is_a_Second_Mover_Advantage.docx"),
+    outPath: path.join(OUT, "033_What_Is_a_Second_Mover_Advantage.docx"),
     titleH1: "What Is a Second Mover Advantage",
     bodyBlocks: [
       p(
@@ -183,7 +183,7 @@ async function main() {
         ),
       ]),
       ...chartImage(
-        path.join(OUT, "charts", "003_pioneer_vs_second_mover.png"),
+        path.join(OUT, "charts", "033_pioneer_vs_second_mover.png"),
         { widthIn: 6, caption: "Launch or founding years for each pioneer and the second mover that overtook it. See Sources below." }
       ),
       h2("When Being Second Does Not Work"),
@@ -220,7 +220,7 @@ async function main() {
   // Article 004 (brief No. 71) — Direct / Primary Subject
   // ------------------------------------------------------------------
   await buildArticle({
-    outPath: path.join(OUT, "004_What_Is_MPLY_ETF.docx"),
+    outPath: path.join(OUT, "071_What_Is_MPLY_ETF.docx"),
     titleH1: "What Is MPLY ETF",
     bodyBlocks: [
       p([
@@ -249,7 +249,7 @@ async function main() {
         "The portfolio held 100 positions as of the most recent public data, with its ten largest holdings, including Nvidia, Alphabet, Apple, Microsoft, and Amazon, making up roughly 64% of total assets. That level of concentration in mega-cap technology names means the fund's performance leans heavily on how a small group of dominant companies perform, more so than a broad-market index fund would."
       ),
       ...chartImage(
-        path.join(OUT, "charts", "004_mply_top10_holdings.png"),
+        path.join(OUT, "charts", "071_mply_top10_holdings.png"),
         { widthIn: 6, caption: "MPLY's ten largest holdings by portfolio weight. Source: stockanalysis.com, fetched 2026-09-23." }
       ),
       h2("How It Has Performed So Far"),
