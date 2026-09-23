@@ -511,25 +511,32 @@ passed to `buildArticle`.
 ## Current status
 **2026-09-23 — project skeleton created; one 4-article pilot batch (from
 `Production Briefs/2026-09-28_Set_01.xlsx`, rows 1/13/33/71) produced,
-approved for content/voice, and regenerated in the publication-only DOCX
-format** (title → body → optional MPLY/Sources → hashtags, nothing else, all
-metadata tracker-only). Two rounds of editorial-standard tightening have
-been folded into this file since that regeneration but **not yet applied
-back to the pilot's 4 files**, pending user direction:
-1. **Example specificity** — Article 003 ("What Is a Second Mover
-   Advantage") uses vague, unnamed examples ("a dominant one emerged," "a
-   later entrant won") in its "Real Examples" section, which the
-   "Examples and evidence" rule above now prohibits.
-2. **MPLY section depth** — Article 001 ("What Is Pricing Power") is
-   `MPLY Relevance = Strong thematic` in the brief but currently gets only
-   one closing sentence on MPLY. Under the "MPLY section depth" rule above,
-   pricing power is explicitly one of MPLY's own screened-for
-   characteristics, so this is a real Strong-thematic connection and should
-   get a substantial, multi-paragraph MPLY section, not a brief mention.
-   Article 002 (Moderate) and Article 004 (Primary Subject) are unaffected
-   by this rule. No article has yet been evaluated for a visual under the
-   new "evaluate every article" visual rule beyond Article 004's existing
-   holdings chart.
+approved for content/voice, regenerated in the publication-only DOCX format,
+and revised against the full editorial standard.** All four articles now
+comply with every rule in this file:
+- **Article 001** ("What Is Pricing Power") gained a substantial,
+  multi-paragraph "Why MPLY Treats Pricing Power as a Core Signal" section
+  (Strong thematic relevance, per the MPLY section depth rule), naming
+  Nvidia and Apple as verified current top holdings whose pricing behavior
+  illustrates the screen, plus a Sources section. No visual: evaluated, but
+  no verified numeric dataset supports one for this topic, so the honest
+  call was "no chart" rather than a fabricated one.
+- **Article 002** ("What Is a Cost Advantage Moat") replaced vague examples
+  ("discount retailers," "low-cost airlines") with named, researched ones
+  (Walmart, Costco, Southwest Airlines' single-737-fleet strategy, sourced
+  to Simple Flying), and added an illustrative (clearly labeled, not
+  company-specific) economies-of-scale chart.
+- **Article 003** ("What Is a Second Mover Advantage") replaced its vague
+  "a dominant one emerged" language with three researched, named, dated
+  examples (AltaVista 1995 to Google 1998; Myspace 2003 to Facebook 2004;
+  IBM Simon 1994 to iPhone 2007), a factual pioneer-vs-second-mover
+  timeline chart, and a Sources section citing the articles used.
+- **Article 004** ("What Is MPLY ETF") was already compliant (Primary
+  Subject, verified holdings chart, Sources section) and is unchanged.
+
+Verified after rebuild: 0 em dashes, 0 banned production-metadata strings,
+every file starts with its title and ends with hashtags as the last
+content. Word counts: 886 / 583 / 713 / 549.
 
 The production tracker (`Production Trackers/MPLY_Article_Production.xlsx`)
 has not yet been populated with the pilot's 4 rows. The user will supply

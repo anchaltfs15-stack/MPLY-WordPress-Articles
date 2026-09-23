@@ -37,8 +37,45 @@ async function main() {
         "Pricing power is not permanent. Regulation can cap what a utility or a pharmaceutical company charges. A well-funded competitor can undercut a brand's premium. A macroeconomic downturn can push even loyal customers toward cheaper alternatives once their own budgets tighten. And elasticity is rarely fixed: a company can raise prices once without losing customers and still find the second increase is the one that finally pushes buyers away."
       ),
       p(
-        "Durable pricing power, sustained over many years and multiple price increases, is a different and rarer thing than a single successful price hike. That durability is part of what separates a business with a genuine competitive advantage from one simply benefiting from a temporary supply shortage or a one-time product cycle. It is also one of the characteristics that actively managed funds screening for monopolistic or oligopolistic business traits, such as the MPLY ETF, look for when evaluating whether a company's advantage is likely to hold up over time."
+        "Durable pricing power, sustained over many years and multiple price increases, is a different and rarer thing than a single successful price hike. That durability is part of what separates a business with a genuine competitive advantage from one simply benefiting from a temporary supply shortage or a one-time product cycle."
       ),
+      h2("Why MPLY Treats Pricing Power as a Core Signal"),
+      p(
+        "Pricing power is not a side note in how the Strategy Shares Monopoly ETF (MPLY) selects holdings. It is one of the specific characteristics named in the fund's stated screening criteria, alongside brand dominance, regulatory exclusivity, industry concentration, high barriers to market entry, and network effects. The fund's managers are actively looking for businesses that can set or hold prices with limited competitive pushback, on the theory that this kind of position tends to accompany the broader monopolistic or oligopolistic characteristics the fund targets."
+      ),
+      p(
+        "In practice, pricing power rarely shows up alone in MPLY's evaluation. A company that can raise prices today but faces easy substitution, low switching costs, or an absence of real barriers to entry does not fit the fund's broader thesis, even if a temporary price increase looks impressive on paper. What the fund's approach is built around is the combination: pricing power that coexists with the structural advantages that make it durable, such as a dominant market position, control over a supply chain, or intellectual property that a competitor cannot simply replicate."
+      ),
+      p([
+        run(
+          "Some of MPLY's largest current holdings illustrate the kind of pricing behavior the fund's screen is designed to capture. "
+        ),
+        run("Nvidia", { bold: true }),
+        run(
+          ", the fund's largest position, has been able to sustain premium pricing on its data-center GPUs through a period of surging AI infrastructure demand, a position reinforced by its dominant share of AI accelerator hardware. "
+        ),
+        run("Apple", { bold: true }),
+        run(
+          ", also among the fund's top holdings, has maintained premium iPhone pricing for years despite the availability of far cheaper Android alternatives, a pattern generally attributed to brand loyalty and ecosystem lock-in rather than any single feature advantage. Neither company qualifies for MPLY's portfolio on pricing power alone, but pricing power is part of the case for both."
+        ),
+      ]),
+      p(
+        "A reader researching MPLY through this lens should look past the price increase itself and ask what is protecting it: a patent, a network effect, a regulatory position, a brand that customers will pay to stay loyal to. Pricing power without one of those underlying protections tends to be temporary, and MPLY's methodology is built around finding the more durable version. This is also a limitation worth being direct about: pricing power is evidence of a possible moat, not proof of one, and the fund's own selection process relies on the manager's active judgment about which companies clear that bar, not a mechanical rule."
+      ),
+      p([
+        run(
+          "Readers who want to see how this criterion plays out across a full portfolio can review "
+        ),
+        link("MPLY's current holdings and investment approach", "https://strategysharesetfs.com/mply/"),
+        run(
+          " on the fund's official page."
+        ),
+      ]),
+      h2("Sources"),
+      ...bullets([
+        "Strategy Shares Monopoly ETF official fund page (screening criteria, current holdings): strategysharesetfs.com/mply",
+        "stockanalysis.com/etf/mply (holdings weights, fetched 2026-09-23)",
+      ]),
     ],
     hashtags: ["#PricingPower", "#InvestingBasics", "#CompetitiveAdvantage"],
   });
@@ -60,9 +97,16 @@ async function main() {
       p(
         "Access to cheaper inputs matters too. A company with a long-term contract locking in lower raw material costs, or with a logistics network built years ago at lower cost than a new entrant could replicate today, carries a structural cost edge that has nothing to do with current operational skill."
       ),
+      ...chartImage(
+        path.join(OUT, "charts", "002_economies_of_scale.png"),
+        { widthIn: 6, caption: "A conceptual illustration of how fixed costs spread over more units as volume grows; not derived from any specific company's figures." }
+      ),
       h2("Cost Advantage Moat in Practice"),
       p(
-        "Discount retailers built around scale purchasing and lean store formats are a textbook example. Low-cost airlines built around single aircraft types, tight turnaround times, and no-frills service are another. In both cases, the advantage is visible in the income statement: lower cost of goods sold or lower operating expense per unit of revenue than the rest of the industry."
+        "Walmart is the standard reference case for purchasing-scale cost advantage: its size lets it negotiate supplier terms that a regional chain cannot match, and that gap shows up directly in everyday shelf prices. Costco takes a related but distinct approach, using a membership-fee model to run merchandise at thin, sometimes near-breakeven margins while the fee itself carries the profit, which lets it undercut competitors that need to price for margin on every item sold."
+      ),
+      p(
+        "Southwest Airlines is the clearer example on the operating side. Since its founding, it has flown a single aircraft family, the Boeing 737, rather than a mixed fleet. That choice simplifies pilot and mechanic training, lets crews and aircraft be swapped between routes without aircraft-specific requalification, and speeds up how quickly a plane can be turned around at the gate. The airline has said the practice saves hundreds of millions of dollars a year compared with operating a mixed fleet, the kind of structural cost gap that is hard for a competitor to close without rebuilding its own fleet strategy from scratch."
       ),
       h2("Why This Moat Type Is Often Fragile"),
       p(
@@ -71,6 +115,10 @@ async function main() {
       p(
         "That is why investors and analysts typically look past whether a cost advantage exists at all and ask how it was built, and whether a well-capitalized competitor could replicate it within a few years. Cost efficiency by itself is common; cost efficiency that is genuinely hard to copy is rarer, and it's that second, durability-focused question that overlaps with how funds built around identifying durable competitive advantages, including MPLY, frame their own screening process."
       ),
+      h2("Sources"),
+      ...bullets([
+        "Southwest Airlines single-fleet strategy and its reported cost savings: Simple Flying, \"Why One Of The World's Biggest Airlines Bet Its Future On A Single Aircraft Family\" (simpleflying.com)",
+      ]),
     ],
     hashtags: ["#EconomicMoat", "#CostAdvantage", "#InvestingBasics"],
   });
@@ -94,7 +142,23 @@ async function main() {
       ),
       h2("Real Examples of Second Movers Winning"),
       p(
-        "Search engines existed years before a dominant one emerged; the eventual market leader was not first, but built a faster, simpler, more accurate product once the category's problems were well understood. Social networks followed a similar pattern: earlier platforms proved that people wanted to connect online, and a later entrant won by fixing the design and privacy issues those earlier platforms struggled with. Smartphones followed the same arc. Touchscreen phones existed before the device that came to define the category; what changed was execution, not the underlying idea."
+        "Search engines are the clearest case. AltaVista launched in December 1995 and became one of the dominant search tools of the mid-1990s, alongside Yahoo, Excite, and Lycos. Google did not launch until 1998, three years later, but its PageRank algorithm ranked pages by link popularity rather than raw keyword matching, and it did not suffer from the spam-cluttered results that increasingly plagued AltaVista as webmasters learned to game keyword-based rankings. By 2001, Google had captured roughly 85% of search market share. AltaVista, the pioneer, was acquired by Yahoo in 2003 and shut down in 2013."
+      ),
+      p(
+        "Social networks followed a similar, faster-moving pattern. Myspace, founded in 2003, was the dominant social network in the United States for several years. Facebook launched in 2004, a year later, and overtook Myspace in global unique visitors by April 2008 and in US users by May 2009. Facebook's advantage was largely about design and control: a simpler, more consistent profile format and a tighter approach to how content spread, at a point when Myspace's freeform customization had become cluttered and harder to navigate."
+      ),
+      p([
+        run(
+          "Smartphones show the longest runway between pioneer and winner. IBM's Simon Personal Communicator, released in 1994, is generally credited as the first touchscreen smartphone, and later devices like the Palm Treo, Nokia 7710, and BlackBerry line built on that category through the 2000s. Apple's "
+        ),
+        run("iPhone", { bold: true }),
+        run(
+          " did not arrive until June 2007, thirteen years after IBM Simon, but it combined a capacitive multi-touch screen, a full mobile web browser, and, a year later, an app store into one product. What made the iPhone the category-defining device was not the idea of a touchscreen phone, which had existed for over a decade, but execution: interface design, developer ecosystem, and integration that the earlier entrants had not put together."
+        ),
+      ]),
+      ...chartImage(
+        path.join(OUT, "charts", "003_pioneer_vs_second_mover.png"),
+        { widthIn: 6, caption: "Launch or founding years for each pioneer and the second mover that overtook it. See Sources below." }
       ),
       h2("When Being Second Does Not Work"),
       p(
@@ -103,6 +167,12 @@ async function main() {
       p(
         "The practical takeaway is that neither position, first or second, guarantees success. What tends to matter more is execution: whether a company can turn the lessons of an earlier entrant, or the ground that entrant already broke, into a genuinely better product, and whether the market's dynamics (network effects, switching costs, patents) leave room for a later arrival to catch up at all."
       ),
+      h2("Sources"),
+      ...bullets([
+        "AltaVista launch and Google's rise, including 2001 search share: Cybercultural, \"Search Engines in 1998, Before Google Takes the Spotlight,\" and Wikipedia, \"AltaVista\"",
+        "Facebook overtaking Myspace in 2008-2009: PCWorld, \"Facebook Overtakes MySpace in U.S.\"",
+        "IBM Simon (1994) and the iPhone's June 2007 launch: AppleInsider, \"The story of the original iPhone, that nobody thought was possible,\" and SimpleTexting, \"Smartphone history\"",
+      ]),
     ],
     hashtags: ["#BusinessStrategy", "#CompetitiveAdvantage", "#Innovation"],
   });
