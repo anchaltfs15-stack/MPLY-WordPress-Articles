@@ -99,6 +99,23 @@ multiple dimensions that matter. The target is "complete enough to satisfy
 the search intent without filler," never "minimum possible length" and
 never a word-count target.
 
+## Section depth and reader engagement
+Avoid shallow sections: a heading like "Why It Matters" followed by one
+generic sentence ("Pricing power matters because it helps companies
+maintain margins") before jumping to the next heading under-serves the
+heading. Develop the idea: what does it mean economically, why does it
+matter, what changes when the underlying conditions shift, what evidence
+would an investor look for, what could make the conclusion wrong. Depth
+depends on the subject; avoid artificial padding, but don't under-explain
+an important concept just to keep sections short.
+
+The article should read as one coherent argument, not a set of disconnected
+mini-answers: definition flows into mechanism, mechanism into evidence,
+evidence into practical evaluation, evaluation into limitations, limitations
+into MPLY relevance where applicable. Use transitions that connect
+consecutive sections rather than restarting the reader's attention at every
+heading.
+
 ## Examples and evidence — specificity requirement
 When a section calls for examples, give actual, specific ones. If a
 "Real Examples" section exists, name the real companies/products/events and
@@ -139,10 +156,22 @@ without being simplistic.
 parentheses, colons, semicolons, or separate sentences instead.
 
 **Avoid:** generic AI openers ("In today's rapidly evolving world...", "Let's dive
-in...", "Whether you're a seasoned investor or just starting out..."), "In
-conclusion," empty summaries, repetitive definitions, excessive bullets/headings,
-corporate jargon, marketing language, unnecessary disclaimers, anything that
-reads machine-generated.
+in...", "Whether you're a seasoned investor or just starting out...",
+"Understanding this concept is crucial...", "At the end of the day..."), "In
+conclusion," empty summaries, repetitive definitions, repetitive AI-style
+transitions, excessive bullets/headings, corporate jargon, marketing language,
+unnecessary disclaimers, anything that reads machine-generated.
+
+## Financial writing standard
+Write for an intelligent investor: explain the economics, don't just define
+the term. Where the topic calls for it, draw real distinctions instead of
+treating related-but-different ideas as interchangeable: temporary advantage
+vs. durable advantage, correlation vs. causation, revenue growth vs.
+profitable growth, high margin vs. pricing power, market share vs.
+competitive moat, recurring revenue vs. durable retention, short-term
+performance vs. long-term evidence. Where a conclusion depends on evidence,
+say what evidence would actually support it, rather than asserting the
+conclusion alone.
 
 ## Structure
 No universal template. Options (use what the intent calls for, not all of them
@@ -178,6 +207,54 @@ editorial content woven into the article, never as a labeled section.
 - **Primary Subject** — the article can focus substantially on MPLY when the
   keyword/intent is directly about the fund.
 Never turn an informational article into an MPLY advertisement.
+
+### MPLY section depth — Strong thematic defaults to substantial, not one sentence
+"MPLY is not mandatory" does not mean a Strong-thematic connection should
+normally get only one sentence. **For `MPLY Relevance = Strong thematic`,
+the default expectation is a dedicated, multi-paragraph MPLY section**,
+unless researching the specific topic actually shows the connection is
+weaker than the brief's relevance tag suggests. Treat the brief's
+`MPLY Placement` value as the starting guidance, but let the relevance tag
+set the depth floor: a "Strong thematic" row whose `MPLY Placement` says
+"Brief Mention" still deserves reconsideration if a real, substantive
+connection exists (as it usually will, since "Strong thematic" is the
+brief's own signal that it does) — one sentence under-serves that row, and
+the placement label is guidance, not a hard cap. "Moderate" relevance is
+normally satisfied by a paragraph or brief contextual reference, not a full
+section. "Indirect" and "None" stay brief-mention-or-omit as before.
+
+A substantial MPLY section explains, in the article's own words, not a
+reused paragraph:
+1. Why the article's concept matters to MPLY specifically.
+2. Which part of MPLY's stated investment approach relates to the concept.
+3. How the concept can show up in the types of businesses MPLY evaluates.
+4. What a reader researching MPLY should actually look at.
+5. A specific, verified MPLY characteristic, holding, or methodology detail,
+   when it's genuinely relevant (not a mandatory recitation).
+6. Appropriate limitations or distinctions (for example: pricing power
+   alone doesn't prove a durable moat).
+7. A natural path to the official MPLY page.
+
+Never let the section collapse into MPLY's boilerplate description
+("MPLY invests in companies with brand dominance, pricing power, network
+effects, regulatory exclusivity and high barriers to entry") repeated
+verbatim as the entire section — that sentence may appear as one fact among
+several, never as the whole explanation. Write the specific mechanism for
+this topic instead (e.g. pricing power: durable economic rents and market
+dominance; switching costs: retention and position protection; network
+effects: how participation growth builds barriers to entry; recurring
+revenue: not itself a moat, examine what makes the retention durable).
+
+### MPLY CTA / reader path
+No aggressive promotional language: never "Buy MPLY now," "Best ETF,"
+"Invest in MPLY," "Don't miss MPLY." The goal is to move an interested
+reader toward research, not to close a sale. Adapt language like: "Readers
+who want to examine how this approach is applied in an actual portfolio can
+review MPLY's current investment approach and holdings on the fund's
+official page," or "To see how these characteristics are reflected in the
+fund's current portfolio, readers can review MPLY's latest holdings and
+fund documents." Vary the exact phrasing per article; don't reuse one CTA
+sentence everywhere.
 
 ### MPLY link
 Official page only: `https://strategysharesetfs.com/mply/`. Natural anchor text,
@@ -229,14 +306,45 @@ language" above) is what keeps the article appropriate, not a disclaimer
 paragraph. Only include disclaimer language if the user explicitly supplies it
 as a project requirement for a specific batch.
 
-## Visuals
-Claude decides per article, not as a default. Only include one when it genuinely
-improves understanding (comparison table, framework/process diagram, timeline,
-flowchart, verified-data chart). Never invent numbers to produce a chart. If
-included, the chart/table appears directly in the article as ordinary content
-(with a normal caption, not a labeled production field). The decision itself
-(`Visual Decision: Yes/No`) and the designer-usable brief go in the tracker,
-not the DOCX.
+## Visuals — evaluate every article, don't default to none
+Visuals are not optional-by-default the way an FAQ is. **Every article must
+be evaluated for at least one meaningful visual opportunity** before it's
+considered done; the outcome of that evaluation can still be "no visual
+belongs here," but skipping the evaluation itself is not acceptable. The
+goal is comprehension, engagement, and scanability, not decoration.
+
+Possible visual types: editorial hero image, data chart, comparison table,
+framework diagram, process diagram, economic model, timeline, competitive-
+moat diagram, portfolio/holdings chart, flow diagram, conceptual
+illustration. Pick per article, not the same type every time — a pricing-
+power article might warrant a price-growth-vs-volume chart or a conceptual
+pricing-power framework; a cost-advantage article a unit-cost comparison or
+economies-of-scale diagram; a second-mover article a first-mover-vs-second-
+mover framework or timeline; an MPLY-specific article a holdings-
+concentration chart, portfolio-composition chart, or strategy framework.
+
+**Data rule:** every number in a chart must come from a verified source,
+with the source recorded. Never invent values or present illustrative data
+as real data; if an explanatory chart genuinely needs an illustrative
+example, label it clearly as illustrative. When reliable numerical data
+isn't available, use a conceptual visual instead of forcing a data chart,
+and never manufacture a chart just to satisfy the evaluation requirement.
+
+**Visuals must actually be produced, not just described.** Don't stop at
+"Visual Decision: Yes" with a vague brief — generate the chart/diagram when
+the production environment supports it (see `Scripts/wp_docx_helpers.js`'s
+`chartImage()` and the `dataviz` skill for chart work). If a visual must
+instead be handed off as a designer/AI-image prompt, the brief needs to be
+production-ready detail, not a one-line description.
+
+**Placement follows the content it supports** — not automatically at the
+bottom. A typical flow: intro → explanation → the relevant chart/diagram →
+interpretation → further analysis. Place the visual where the surrounding
+text actually needs it.
+
+The decision (`Visual Decision: Yes/No`) and the designer-usable brief go in
+the tracker; the visual itself (if Yes) appears directly in the article as
+ordinary content with a normal caption, never a labeled production field.
 
 ## Internal links
 Only when a genuine contextual relationship exists. Use real URLs if available in
@@ -247,17 +355,27 @@ which case it may be incorporated as a natural hyperlink directly in the article
 text.
 
 ## External sources / reader-facing Sources section
-Sourcing is part of research, not an afterthought. Specific examples and
-historical, financial, company, regulatory, market, or statistical claims
-need an actual credible source behind them — find one before making the
-claim, or don't make it. Record every source actually used in the tracker's
-`External Sources` column regardless of whether a Sources section appears in
-the article, real citations only, never fabricated, and never claim
-something was verified unless it actually was. Separately, if the article
-genuinely benefits from a reader-facing "Sources" section (for example, a
-fact readers would want to verify themselves), add it directly in the
-article, right before the hashtags — only sources actually used, never a
-generic list appended by default.
+Sourcing is part of research, not an afterthought, and reference links are
+required whenever an article contains claims that need verification, not
+optional polish. Specific examples and historical, financial, company,
+regulatory, market, or statistical claims need an actual credible source
+behind them, found and checked before the claim is made, never after. By
+topic, consider: SEC, Federal Reserve, Bureau of Labor Statistics, company
+investor-relations pages, annual reports, 10-K/10-Q filings, official ETF
+issuer pages, other official government sources, academic research,
+reputable financial publications, industry sources. For MPLY-specific
+information, prioritize: (1) official Strategy Shares/MPLY sources, (2) fund
+documents, (3) SEC filings where applicable, (4) reliable secondary sources
+for cross-checking. Never fabricate a source or write a URL from memory;
+only use real, working URLs.
+
+Record every source actually used in the tracker's `External Sources`
+column regardless of whether a Sources section appears in the article, and
+never claim something was verified unless it actually was. Separately, when
+sources materially support the article, include a reader-facing "Sources"
+section near the end, before the hashtags, with the actual references
+(hyperlinked where appropriate) rather than a vague line like "Sources:
+company filings and industry research."
 
 ## FAQ
 Only when it genuinely serves additional search intent — 0, 2, 4, or more
@@ -327,18 +445,37 @@ searcher's intent. This human read-through is a check in addition to,
 not a replacement for, the per-article QC below.
 
 ## Per-article QC (before marking Final QC Status: PASS)
-Search intent answered directly; primary/secondary/related keywords covered
-naturally with no stuffing; writing sounds human, non-repetitive, no generic AI
-phrases, no em dash; factual claims and current facts verified, sources genuine;
-MPLY genuinely relevant (not forced), connection specific to this article, not
-reused verbatim from a prior one, official URL only; no investment
-recommendations made; visual (if any) uses only verified data; internal/external
-links genuine, no invented URLs. **Plus the DOCX-purity checks:** article
-begins with the title itself (no "SEO Title"/"Meta Description" label, no
-"Article" label); no production-metadata banner or section anywhere in the
-file; no "MPLY Decision"/"MPLY Section / Placement" text; no "Visual Decision"
-text; no "Internal Link Suggestions" block; no generic disclaimer; hashtags
-present and are the literal last content in the document, nothing after them.
+Run through every category before marking PASS:
+
+- **Search intent** — Does the opening answer the query? Is the article
+  actually useful to the searcher?
+- **Depth** — Are important concepts properly explained? Are sections
+  substantive, not shallow? Are examples used where helpful, and are they
+  specific/named rather than vague? Are limitations addressed? Is the
+  article complete without filler?
+- **MPLY** — Is the relevance decision correct for this topic? If Strong
+  thematic, is there a substantive, multi-paragraph MPLY section (not one
+  sentence)? Does it explain the specific connection rather than reusing
+  MPLY's boilerplate description? Does it read as useful, not promotional?
+  Is the official MPLY link included where it makes sense, with non-
+  aggressive CTA language?
+- **Evidence** — Are factual claims supported? Are named examples sourced?
+  Are current MPLY figures verified against `MPLY Information/` or the
+  official source? Are URLs real, not invented?
+- **Visuals** — Was the article actually evaluated for a meaningful visual
+  (not skipped by default)? If included, does it improve comprehension, is
+  every figure verified with the source recorded, and is it placed where
+  the surrounding text needs it (not dumped at the bottom by default)?
+- **SEO** — Primary keyword, secondary keywords, and related terms covered
+  naturally; search intent satisfied; no keyword stuffing.
+- **Publishing / DOCX purity** — Clean article title with no label; no
+  production metadata anywhere in the file ("SEO Title"/"Meta Description"
+  labels, "PRODUCTION METADATA" banner, "MPLY Decision"/"MPLY Section /
+  Placement" text, "Visual Decision" text, "Internal Link Suggestions"
+  block, "Final QC Status"); no generic disclaimer; reader-facing
+  references included where useful; hashtags present as the literal last
+  content, nothing after them; no em dash anywhere.
+
 DOCX exists and is recorded in the tracker with the correct Set number.
 Anything unresolved → `Final QC Status: NEEDS REVIEW` with the issue explained
 in Notes, not PASS.
@@ -376,13 +513,25 @@ passed to `buildArticle`.
 `Production Briefs/2026-09-28_Set_01.xlsx`, rows 1/13/33/71) produced,
 approved for content/voice, and regenerated in the publication-only DOCX
 format** (title → body → optional MPLY/Sources → hashtags, nothing else, all
-metadata tracker-only). The "Editorial depth standard" and "Examples and
-evidence" sections above were added after that regeneration — the pilot's
-Article 003 ("What Is a Second Mover Advantage") currently uses vague,
-unnamed examples ("a dominant one emerged," "a later entrant won") in its
-"Real Examples" section, which is exactly the pattern the new specificity
-rule prohibits; it has not yet been revised against this rule pending user
-direction. The production tracker (`Production Trackers/
-MPLY_Article_Production.xlsx`) has not yet been populated with the pilot's
-4 rows. The user will supply further keyword brief file(s) in the
-`Production Briefs/_TEMPLATE_Set_XX.xlsx` format as needed.
+metadata tracker-only). Two rounds of editorial-standard tightening have
+been folded into this file since that regeneration but **not yet applied
+back to the pilot's 4 files**, pending user direction:
+1. **Example specificity** — Article 003 ("What Is a Second Mover
+   Advantage") uses vague, unnamed examples ("a dominant one emerged," "a
+   later entrant won") in its "Real Examples" section, which the
+   "Examples and evidence" rule above now prohibits.
+2. **MPLY section depth** — Article 001 ("What Is Pricing Power") is
+   `MPLY Relevance = Strong thematic` in the brief but currently gets only
+   one closing sentence on MPLY. Under the "MPLY section depth" rule above,
+   pricing power is explicitly one of MPLY's own screened-for
+   characteristics, so this is a real Strong-thematic connection and should
+   get a substantial, multi-paragraph MPLY section, not a brief mention.
+   Article 002 (Moderate) and Article 004 (Primary Subject) are unaffected
+   by this rule. No article has yet been evaluated for a visual under the
+   new "evaluate every article" visual rule beyond Article 004's existing
+   holdings chart.
+
+The production tracker (`Production Trackers/MPLY_Article_Production.xlsx`)
+has not yet been populated with the pilot's 4 rows. The user will supply
+further keyword brief file(s) in the `Production Briefs/_TEMPLATE_Set_XX.xlsx`
+format as needed.
