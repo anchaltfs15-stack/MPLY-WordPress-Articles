@@ -77,7 +77,7 @@ async function main() {
         "stockanalysis.com/etf/mply (holdings weights, fetched 2026-09-23)",
       ]),
     ],
-    hashtags: ["#PricingPower", "#InvestingBasics", "#CompetitiveAdvantage"],
+    hashtags: ["#PricingPower", "#CompetitiveAdvantage", "#EconomicMoat", "#MPLY", "#Investing", "#QualityInvesting", "#Fundamentals"],
   });
 
   // ------------------------------------------------------------------
@@ -120,7 +120,7 @@ async function main() {
         "Southwest Airlines single-fleet strategy and its reported cost savings: Simple Flying, \"Why One Of The World's Biggest Airlines Bet Its Future On A Single Aircraft Family\" (simpleflying.com)",
       ]),
     ],
-    hashtags: ["#EconomicMoat", "#CostAdvantage", "#InvestingBasics"],
+    hashtags: ["#CostAdvantageMoat", "#EconomicMoat", "#CompetitiveAdvantage", "#Investing", "#ValueInvesting", "#Fundamentals"],
   });
 
   // ------------------------------------------------------------------
@@ -185,7 +185,7 @@ async function main() {
         "IBM Simon (1994) and the iPhone's June 2007 launch: AppleInsider, \"The story of the original iPhone, that nobody thought was possible,\" and SimpleTexting, \"Smartphone history\"",
       ]),
     ],
-    hashtags: ["#BusinessStrategy", "#CompetitiveAdvantage", "#Innovation"],
+    hashtags: ["#SecondMoverAdvantage", "#BusinessStrategy", "#CompetitiveAdvantage", "#Innovation", "#MarketStrategy", "#Investing"],
   });
 
   // ------------------------------------------------------------------
@@ -250,7 +250,7 @@ async function main() {
         "stockanalysis.com/etf/mply (holdings breakdown and secondary data verification)",
       ]),
     ],
-    hashtags: ["#MPLY", "#ETFResearch", "#ActiveManagement"],
+    hashtags: ["#MPLY", "#MPLYETF", "#ETFResearch", "#MonopolyInvesting", "#CompetitiveAdvantage", "#ActiveManagement", "#Investing"],
   });
 }
 
