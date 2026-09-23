@@ -29,7 +29,8 @@ history — lives inside this folder and its own repository.
 - Production briefs (source of truth, one file per set): `Production Briefs/YYYY-MM-DD_Set_XX.xlsx`
 - Articles: `Articles/YYYY-MM-DD_Set_XX/NNN_Short_Article_Title.docx`
 - Production tracker (single appendable workbook, never overwritten): `Production Trackers/MPLY_Article_Production.xlsx`
-- Reference/approved sample articles: `Reference Articles/`
+- Reference/approved sample articles (quality benchmark only — see "Editorial
+  depth standard" below; empty as of 2026-09-23, awaiting user upload): `Reference Articles/`
 - Verified current MPLY facts (expense ratio, holdings, AUM, etc.): `MPLY Information/`
 - Templates for the brief and tracker schema: `Production Briefs/_TEMPLATE_Set_XX.xlsx`,
   `Production Trackers/_TEMPLATE_MPLY_Article_Production.xlsx`
@@ -70,6 +71,49 @@ go as deep as the topic actually needs. No mandatory word count — a simple top
 gets a shorter article, a complex one gets more depth. Never pad to hit a length
 target.
 
+## Editorial depth standard
+Approved articles in `Reference Articles/` (once supplied) are quality
+benchmarks, not templates: use them to calibrate writing quality, depth,
+analytical thinking, natural flow, use of examples, use of distinctions and
+comparisons, discussion of limitations/failure cases, appropriate MPLY
+integration, appropriate FAQ use, appropriate source use, and hashtag
+placement. **Never copy their wording, paragraph structure, headings,
+section count, or length.** Every article is independently structured around
+its own search intent.
+
+"No mandatory word count" is not permission to write thin or superficial
+articles. Before finishing an article, check it against these questions:
+1. Has the searcher's main question been answered directly?
+2. Have the important mechanisms behind the concept been explained?
+3. Have important distinctions or misconceptions been addressed?
+4. Have relevant examples been provided where they improve understanding?
+5. Have limitations, failure cases, or risks been addressed where relevant?
+6. Are there practical indicators or metrics where appropriate?
+7. Would a reader searching this topic feel the subject was actually covered?
+8. Is anything important missing simply because the article was kept short?
+
+If something important is missing, keep developing the article — but never
+add filler purely to increase length. A short article is correct when the
+topic is genuinely narrow; a longer one is required when the topic has
+multiple dimensions that matter. The target is "complete enough to satisfy
+the search intent without filler," never "minimum possible length" and
+never a word-count target.
+
+## Examples and evidence — specificity requirement
+When a section calls for examples, give actual, specific ones. If a
+"Real Examples" section exists, name the real companies/products/events and
+explain the example accurately, researched, not invented. Don't write
+"Search engines existed before a dominant one emerged" when the actual
+company names materially improve the explanation, and don't write "Discount
+retailers are examples" when naming one is more useful to the reader.
+
+Every specific company, historical, financial, regulatory, market, or
+statistical claim needs actual research behind it, not a hedge phrase.
+Don't substitute sourcing with "widely documented," "well known," "commonly
+accepted," or "industry experts agree" unless the claim is genuinely common
+knowledge that doesn't need a citation. When a claim is specific enough to
+need a source, either find and use one, or don't make the claim.
+
 ## SEO keyword usage
 - Primary keyword: appears naturally in title, opening, relevant headings, body,
   meta description where appropriate. No forced exact-match repetition.
@@ -102,11 +146,12 @@ reads machine-generated.
 
 ## Structure
 No universal template. Options (use what the intent calls for, not all of them
-every time): strong opening, direct answer, definition/context, mechanism, why it
-matters, examples, metrics, limitations/failure cases, practical research
-considerations, MPLY connection where relevant, FAQ where useful. Don't add an
-"Introduction" or "Key Takeaways" heading, or an FAQ, unless it genuinely earns
-its place.
+every time): direct definition, mechanism, why it matters, examples, metrics,
+how to evaluate it, comparisons, misconceptions, limitations/failure cases,
+investor considerations, MPLY connection where relevant, FAQ, sources. Use
+only the elements that genuinely improve this specific article. Don't add a
+section, an "Introduction"/"Key Takeaways" heading, or an FAQ, just because
+another article had one.
 
 ## MPLY integration — the most important rule in this project
 MPLY is **not required in every article.** Use the brief's `MPLY Relevance` and
@@ -202,11 +247,16 @@ which case it may be incorporated as a natural hyperlink directly in the article
 text.
 
 ## External sources / reader-facing Sources section
-Record every source actually used in the tracker's `External Sources` column,
-real citations only, never fabricated. Separately, if the article genuinely
-benefits from a reader-facing "Sources" or "Further Reading" section (for
-example, a fact readers would want to verify themselves), add it directly in
-the article, right before the hashtags — only sources actually used, never a
+Sourcing is part of research, not an afterthought. Specific examples and
+historical, financial, company, regulatory, market, or statistical claims
+need an actual credible source behind them — find one before making the
+claim, or don't make it. Record every source actually used in the tracker's
+`External Sources` column regardless of whether a Sources section appears in
+the article, real citations only, never fabricated, and never claim
+something was verified unless it actually was. Separately, if the article
+genuinely benefits from a reader-facing "Sources" section (for example, a
+fact readers would want to verify themselves), add it directly in the
+article, right before the hashtags — only sources actually used, never a
 generic list appended by default.
 
 ## FAQ
@@ -268,6 +318,14 @@ mix them:
 Always append new sets; never delete or overwrite prior rows. Preserve the
 original brief fields even after an article is finished.
 
+## Final article test
+Before completing an article, read it as the real searcher would and ask:
+did this article actually answer what I searched for? If not, revise it.
+Don't optimize for a word count, for inserting MPLY, or for inserting
+keywords — optimize for a complete, credible, natural answer to the
+searcher's intent. This human read-through is a check in addition to,
+not a replacement for, the per-article QC below.
+
 ## Per-article QC (before marking Final QC Status: PASS)
 Search intent answered directly; primary/secondary/related keywords covered
 naturally with no stuffing; writing sounds human, non-repetitive, no generic AI
@@ -314,12 +372,17 @@ Final QC Status are assembled separately into the tracker row and never
 passed to `buildArticle`.
 
 ## Current status
-**2026-09-23 — project skeleton created; one 4-article pilot batch produced
-and approved for content/voice, but built under an earlier DOCX format that
-included production-metadata labels and an SEO Title/Meta Description header
-in the file itself.** That format is now superseded by the publication-only
-format specified above (title → body → optional MPLY/FAQ/Sources → hashtags,
-nothing else, all metadata tracker-only). The pilot DOCX files were not
-regenerated as part of this format update; the next batch built should use
-the corrected format. The user will supply further keyword brief file(s) in
-the `Production Briefs/_TEMPLATE_Set_XX.xlsx` format as needed.
+**2026-09-23 — project skeleton created; one 4-article pilot batch (from
+`Production Briefs/2026-09-28_Set_01.xlsx`, rows 1/13/33/71) produced,
+approved for content/voice, and regenerated in the publication-only DOCX
+format** (title → body → optional MPLY/Sources → hashtags, nothing else, all
+metadata tracker-only). The "Editorial depth standard" and "Examples and
+evidence" sections above were added after that regeneration — the pilot's
+Article 003 ("What Is a Second Mover Advantage") currently uses vague,
+unnamed examples ("a dominant one emerged," "a later entrant won") in its
+"Real Examples" section, which is exactly the pattern the new specificity
+rule prohibits; it has not yet been revised against this rule pending user
+direction. The production tracker (`Production Trackers/
+MPLY_Article_Production.xlsx`) has not yet been populated with the pilot's
+4 rows. The user will supply further keyword brief file(s) in the
+`Production Briefs/_TEMPLATE_Set_XX.xlsx` format as needed.
