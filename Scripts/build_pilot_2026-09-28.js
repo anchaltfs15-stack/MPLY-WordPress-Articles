@@ -127,14 +127,26 @@ async function main() {
         "The common mistake is stopping at confirming a cost advantage exists and treating that as the same thing as confirming a moat. Cost advantages can erode faster than advantages built on brand or switching costs: a competitor that scales up eventually captures similar purchasing power, and a new manufacturing technology can wipe out years of process refinement overnight. A pure cost advantage, without something else layered on top of it such as a distribution network or brand recognition, also invites a price war that compresses margins for everyone in the industry, including the low-cost leader."
       ),
       p(
-        "The evaluation question that actually separates a durable advantage from a temporary one is whether a well-capitalized competitor could replicate it within a few years. Cost efficiency by itself is common; cost efficiency that is genuinely hard to copy is rarer, and it's that second, durability-focused question that overlaps with how funds built around identifying durable competitive advantages, including MPLY, frame their own screening process."
+        "The evaluation question that actually separates a durable advantage from a temporary one is whether a well-capitalized competitor could replicate it within a few years. Cost efficiency by itself is common; cost efficiency that is genuinely hard to copy is rarer."
       ),
+      p([
+        run(
+          "That durability question is also where cost advantage connects to how the Strategy Shares Monopoly ETF ("
+        ),
+        run("MPLY", { bold: true }),
+        run(
+          ") screens for potential holdings. Low cost is not itself one of the fund's named criteria, but industry concentration and control of the supply chain are, and a cost advantage is one of the more common mechanisms that produces both: a company that locks in the cheapest inputs, the most efficient process, or the tightest logistics network can use that edge to outlast smaller competitors, which over time concentrates an industry around a handful of survivors. That is the kind of position MPLY's screen is built to identify. But the fund's process asks the same durability question raised above, a cost edge a well-capitalized rival could close within a few years does not indicate the lasting concentration the fund is looking for, even if it produces a real advantage today. Readers interested in how MPLY weighs that distinction can review "
+        ),
+        link("MPLY's investment approach", "https://strategysharesetfs.com/mply/"),
+        run(" on the fund's official page."),
+      ]),
       h2("Sources"),
       ...sourceBullets([
         { label: "Simple Flying, \"Why One Of The World's Biggest Airlines Bet Its Future On A Single Aircraft Family\" (Southwest Airlines single-fleet strategy and reported cost savings)", url: "https://simpleflying.com/why-worlds-biggest-airline-bet-future-single-aircraft-family/" },
+        { label: "Strategy Shares Monopoly ETF official fund page (screening criteria)", url: "https://strategysharesetfs.com/mply/" },
       ]),
     ],
-    hashtags: ["#CostAdvantageMoat", "#EconomicMoat", "#CompetitiveAdvantage", "#Investing", "#ValueInvesting", "#Fundamentals"],
+    hashtags: ["#CostAdvantageMoat", "#EconomicMoat", "#CompetitiveAdvantage", "#MPLY", "#Investing", "#ValueInvesting", "#Fundamentals"],
   });
 
   // ------------------------------------------------------------------
