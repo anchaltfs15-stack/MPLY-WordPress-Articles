@@ -699,15 +699,18 @@ sources" above). `bullets()` stays correct for any other plain bulleted
 list (e.g. "What to Weigh Before Researching Further").
 
 ## Current status
-**2026-09-28 — 44 of 100 rows in `Production Briefs/2026-09-28_Set_01.xlsx` completed**
-(rows 1-43, plus 71), all compliant with every rule in this file
+**2026-09-28 — 54 of 100 rows in `Production Briefs/2026-09-28_Set_01.xlsx` completed**
+(rows 1-53, plus 71), all compliant with every rule in this file
 (publication-only DOCX, adequate MPLY coverage, 5-8 hashtags, hyperlinked
-Sources, archetype variety, FAQ where earned). All 44 rows are logged in
-`Production Trackers/MPLY_Article_Production.xlsx`. 56 rows remain
-unprocessed in this brief. The brief's `Content Cluster` shifted from
-"Economic Moats"/"Competitive Advantage" (rows 1-37) to "Quality Investing"
-(rows 38-43 so far) — a genuinely fresh topic area with lower overlap risk
-than the moat/competitive-advantage rows.
+Sources, archetype variety, FAQ where earned). All 54 rows are logged in
+`Production Trackers/MPLY_Article_Production.xlsx`. 46 rows remain
+unprocessed in this brief. The brief's `Content Cluster` continued through
+"Quality Investing" (rows 38-53) — rows 44-46 and 52 were correctly Omitted
+(no forced MPLY connection), and row 53 (What Is a Monopoly Business — the
+De Beers case) got a full Contextual Section, a verified chart, and an FAQ.
+Batch 6 confirmed the token-efficiency fixes are holding: zero CTA-skeleton
+repeats needed fixing on the first draft, and only 1 new chart was built
+(the batch cap).
 
 **File naming:** `NNN` matches the brief's own `No.` column (zero-padded),
 not build order. The pilot's first 4 articles were originally misnamed by
