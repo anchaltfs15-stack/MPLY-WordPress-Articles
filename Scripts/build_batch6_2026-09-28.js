@@ -40,16 +40,33 @@ async function main() {
       p(
         "Comparing several years of net income against operating cash flow over the same period is the simplest version of this analysis. Persistent, unexplained gaps deserve a closer look at what's actually driving the difference before taking a reported earnings number at face value."
       ),
-      h2("A Brief Note on MPLY"),
-      p(
-        "Earnings quality is a general fundamental-research tool rather than a competitive-advantage signal, and it isn't addressed in the Strategy Shares Monopoly ETF's stated screening criteria. It's a useful check on any company's numbers, including ones evaluated against MPLY's criteria, but it isn't itself one of those criteria."
+      ...chartImage(
+        path.join(OUT, "charts", "044_accrual_gap.png"),
+        { widthIn: 6, caption: "Illustrative example: a widening gap between reported earnings and operating cash flow is the signal earnings-quality analysis looks for." }
       ),
+      h2("Why Earnings Quality Matters When Researching MPLY's Holdings"),
+      p([
+        run(
+          "The Strategy Shares Monopoly ETF's ("
+        ),
+        run("MPLY", { bold: true }),
+        run(
+          ") stated screening criteria identify companies with brand dominance, pricing power, regulatory exclusivity, industry concentration, and high barriers to entry. None of those criteria guarantee that the earnings a screened company reports are fully cash-backed, since a business can hold a genuinely dominant market position and still report earnings that lean on aggressive accounting estimates in a given period. Competitive position and earnings quality answer different questions, and a reader evaluating any of MPLY's holdings individually benefits from checking both."
+        ),
+      ]),
+      p([
+        run(
+          "In practice this means earnings quality functions as a complementary diligence step rather than a competing signal to MPLY's own screen: a holding with a durable competitive position, corroborated by consistently cash-backed earnings over several periods, is a stronger data point than the competitive position alone. Readers who want to see the fund's own stated methodology and current holdings can review MPLY's investment approach on its "
+        ),
+        link("official page", MPLY_URL),
+        run("."),
+      ]),
       h2("Sources"),
       ...sourceBullets([
         { label: "Strategy Shares Monopoly ETF official fund page", url: MPLY_URL },
       ]),
     ],
-    hashtags: ["#EarningsQuality", "#QualityInvesting", "#Accounting", "#FundamentalAnalysis", "#Investing"],
+    hashtags: ["#EarningsQuality", "#QualityInvesting", "#Accounting", "#FundamentalAnalysis", "#MPLY", "#Investing"],
   });
 
   // ==================================================================
@@ -79,16 +96,33 @@ async function main() {
       p(
         "The cycle varies enormously by industry and business model, a grocery retailer and an industrial equipment manufacturer will have structurally different cycles for reasons that have nothing to do with which is better run. Comparisons are most useful within the same industry, or for the same company across time, rather than across unrelated sectors."
       ),
-      h2("A Brief Note on MPLY"),
-      p(
-        "Working capital efficiency is a useful operating-quality metric, but it isn't named in the Strategy Shares Monopoly ETF's stated screening criteria and doesn't by itself indicate a durable competitive advantage. It's a research tool that sits alongside, not inside, MPLY's stated approach."
+      ...chartImage(
+        path.join(OUT, "charts", "045_cash_conversion_cycle.png"),
+        { widthIn: 6, caption: "Illustrative example: days inventory outstanding plus days sales outstanding, minus days payable outstanding." }
       ),
+      h2("How This Connects to the Kind of Business MPLY Targets"),
+      p([
+        run(
+          "A favorable cash conversion cycle, especially a short or negative one, is often a downstream effect of the same characteristics the Strategy Shares Monopoly ETF's ("
+        ),
+        run("MPLY", { bold: true }),
+        run(
+          ") stated criteria look for. A company with real industry concentration and pricing power is frequently able to dictate favorable payment terms to both customers and suppliers, collecting cash faster and paying it out slower than a business without that leverage. That's not a certainty (plenty of dominant businesses still carry structurally long cycles for reasons specific to their industry), but a persistently strong cash conversion cycle is corroborating evidence worth checking alongside MPLY's named screening factors, not a replacement for them."
+        ),
+      ]),
+      p([
+        run(
+          "Readers researching a specific holding's working-capital profile can cross-reference it against MPLY's stated methodology and current portfolio on the fund's "
+        ),
+        link("official page", MPLY_URL),
+        run("."),
+      ]),
       h2("Sources"),
       ...sourceBullets([
         { label: "Strategy Shares Monopoly ETF official fund page", url: MPLY_URL },
       ]),
     ],
-    hashtags: ["#CashConversionCycle", "#WorkingCapital", "#BusinessEconomics", "#Investing", "#Fundamentals"],
+    hashtags: ["#CashConversionCycle", "#WorkingCapital", "#BusinessEconomics", "#MPLY", "#Investing", "#Fundamentals"],
   });
 
   // ==================================================================
@@ -118,16 +152,33 @@ async function main() {
       p(
         "High operating leverage describes a cost structure's sensitivity, not whether the underlying business has any durable advantage protecting its revenue in the first place. A high-leverage business with unprotected revenue is simply a more volatile version of a vulnerable business, not a stronger one. The cost structure and the competitive position are separate questions."
       ),
-      h2("A Brief Note on MPLY"),
-      p(
-        "Operating leverage is a cost-structure characteristic, and it isn't named in the Strategy Shares Monopoly ETF's stated screening criteria. A business can have high or low operating leverage regardless of whether it has the kind of durable competitive position the fund's process looks for; the two questions are independent of each other."
+      ...chartImage(
+        path.join(OUT, "charts", "046_operating_leverage.png"),
+        { widthIn: 6, caption: "Illustrative example: identical 10% revenue growth produces very different profit outcomes depending on cost structure." }
       ),
+      h2("Why Dominant Businesses Often Carry High Operating Leverage"),
+      p([
+        run(
+          "Operating leverage is a cost-structure characteristic, not itself one of the Strategy Shares Monopoly ETF's ("
+        ),
+        run("MPLY", { bold: true }),
+        run(
+          ") stated screening criteria, but the two are frequently found together in practice. A company with genuine industry concentration and high barriers to entry, the kind of position MPLY's process screens for, often also has low marginal cost to serve an additional customer once its dominant infrastructure, platform, or distribution network is built, which is exactly the fixed-cost-heavy profile that produces high operating leverage."
+        ),
+      ]),
+      p([
+        run(
+          "That combination cuts both ways for a reader evaluating a holding: the same leverage that amplifies profit growth when a dominant company is gaining share also amplifies the downside if its position weakens, which is why operating leverage is worth checking as a risk characteristic alongside MPLY's competitive-position criteria, not treated as confirmation of durability on its own. Readers can look at how this plays out across "
+        ),
+        link("MPLY's current holdings", MPLY_URL),
+        run(" directly."),
+      ]),
       h2("Sources"),
       ...sourceBullets([
         { label: "Strategy Shares Monopoly ETF official fund page", url: MPLY_URL },
       ]),
     ],
-    hashtags: ["#OperatingLeverage", "#BusinessEconomics", "#Profitability", "#Investing", "#Fundamentals"],
+    hashtags: ["#OperatingLeverage", "#BusinessEconomics", "#Profitability", "#MPLY", "#Investing", "#Fundamentals"],
   });
 
   // ==================================================================
@@ -157,6 +208,10 @@ async function main() {
       p(
         "Gross margin varies enormously by industry and business model, comparing a software company's margin to a grocery retailer's tells you about the industries, not which company is better run. It's most useful compared against direct competitors in the same business, and tracked over time within the same company, rather than as a single number in isolation."
       ),
+      ...chartImage(
+        path.join(OUT, "charts", "047_margin_waterfall.png"),
+        { widthIn: 6, caption: "Illustrative example: gross margin is measured before operating expenses are subtracted." }
+      ),
       h2("How MPLY's Screen Relates to Gross Margin"),
       p([
         run(
@@ -164,20 +219,20 @@ async function main() {
         ),
         run("MPLY", { bold: true }),
         run(
-          ") stated criteria, but a sustained, wide gross margin is often downstream evidence of the pricing power and industry concentration the fund's process does name explicitly. MPLY's official page describes its full investment approach for readers who want to see how these signals fit together."
+          ") stated criteria, but a sustained, wide gross margin is often downstream evidence of the pricing power and industry concentration the fund's process does name explicitly. A company can pass this margin test and still fail MPLY's screen if that margin isn't backed by a durable structural advantage, which is why the fund evaluates the underlying characteristics directly rather than relying on margin alone."
         ),
       ]),
       p([
-        run("Its "),
+        run("The fund's "),
         link("current holdings", MPLY_URL),
-        run(" are published there as well."),
+        run(" show how these signals show up in practice."),
       ]),
       h2("Sources"),
       ...sourceBullets([
         { label: "Strategy Shares Monopoly ETF official fund page (screening criteria)", url: MPLY_URL },
       ]),
     ],
-    hashtags: ["#GrossMargin", "#QualityInvesting", "#PricingPower", "#Investing", "#Fundamentals"],
+    hashtags: ["#GrossMargin", "#QualityInvesting", "#PricingPower", "#MPLY", "#Investing", "#Fundamentals"],
   });
 
   // ==================================================================
@@ -207,6 +262,10 @@ async function main() {
       p(
         "Operating margin, like gross margin, varies structurally by industry, and a single strong reading doesn't establish durability on its own. A margin that's only ever been tested during favorable conditions is weaker evidence than one that has held up through a downturn or a period of real competitive pressure."
       ),
+      ...chartImage(
+        path.join(OUT, "charts", "047_margin_waterfall.png"),
+        { widthIn: 6, caption: "Illustrative example: operating margin is measured after operating expenses are subtracted from gross profit." }
+      ),
       h2("Where MPLY's Approach Connects"),
       p([
         run(
@@ -214,20 +273,20 @@ async function main() {
         ),
         run("MPLY", { bold: true }),
         run(
-          ") stated criteria describe, industry concentration and pricing power specifically, though operating margin itself isn't a named criterion. The fund publishes its full methodology on its official page for readers who want to see how the underlying characteristics connect to margin outcomes."
+          ") stated criteria describe, industry concentration and pricing power specifically, though operating margin itself isn't a named criterion. A company's operating margin still depends heavily on management discipline over spending, so it's read as supporting evidence for a competitive-position thesis, not proof of one by itself."
         ),
       ]),
       p([
-        run("Its "),
+        run("MPLY's stated methodology and "),
         link("current holdings", MPLY_URL),
-        run(" are listed there as well."),
+        run(" are where that thesis gets tested against real portfolio companies."),
       ]),
       h2("Sources"),
       ...sourceBullets([
         { label: "Strategy Shares Monopoly ETF official fund page (screening criteria)", url: MPLY_URL },
       ]),
     ],
-    hashtags: ["#OperatingMargin", "#QualityInvesting", "#Profitability", "#Investing", "#Fundamentals"],
+    hashtags: ["#OperatingMargin", "#QualityInvesting", "#Profitability", "#MPLY", "#Investing", "#Fundamentals"],
   });
 
   // ==================================================================
@@ -256,6 +315,10 @@ async function main() {
         "Insurance and financial services: retention tied to switching friction and, in some cases, regulatory or underwriting relationships.",
         "Membership and loyalty models: retention tied to accumulated benefits or habitual usage patterns.",
       ]),
+      ...chartImage(
+        path.join(OUT, "charts", "049_churn_ltv_sensitivity.png"),
+        { widthIn: 6, caption: "Illustrative example: estimated customer lifetime value at $100 monthly revenue and 70% gross margin, across churn rates." }
+      ),
       h2("How MPLY's Screen Treats Recurring Revenue Businesses"),
       p([
         run(
@@ -304,20 +367,33 @@ async function main() {
       p(
         "The subscription structure itself doesn't create durability; it just concentrates the consequences of retention into a single, trackable number. A subscription business retains customers for the same underlying reasons any recurring-revenue business does, genuine switching costs, network effects, or habitual usage, not because subscription billing has some inherent protective power. Two subscription businesses with identical pricing can have very different long-term durability depending on which of those underlying forces is actually present."
       ),
+      ...chartImage(
+        path.join(OUT, "charts", "049_churn_ltv_sensitivity.png"),
+        { widthIn: 6, caption: "Illustrative example: how sensitive lifetime value is to a subscription business's churn rate." }
+      ),
       h2("How MPLY's Criteria Relate to the Subscription Model Specifically"),
       p([
         run(
-          "The Strategy Shares Monopoly ETF's stated criteria don't address subscription billing as its own category, consistent with the distinction above: what matters to the fund's process is whether a subscription business's retention is backed by one of its named structural characteristics, not the billing mechanism itself. MPLY's "
+          "The Strategy Shares Monopoly ETF's ("
         ),
-        link("official page", MPLY_URL),
-        run(" has the fund's current holdings and methodology for readers who want to see this applied."),
+        run("MPLY", { bold: true }),
+        run(
+          ") stated criteria don't address subscription billing as its own category, consistent with the distinction above: what matters to the fund's process is whether a subscription business's retention is backed by one of its named structural characteristics, brand dominance, network effects, switching costs rooted in barriers to entry, not the billing mechanism itself. A subscription company with low churn purely from customer inertia looks similar on a lifetime-value chart to one with low churn from a genuine moat, but only the second is the kind of position MPLY's screen is built to identify."
+        ),
+      ]),
+      p([
+        run(
+          "This distinction shows up directly in "
+        ),
+        link("MPLY's current holdings", MPLY_URL),
+        run(", where subscription-model companies are represented specifically for the durable characteristics behind their retention, not for the billing structure itself."),
       ]),
       h2("Sources"),
       ...sourceBullets([
         { label: "Strategy Shares Monopoly ETF official fund page", url: MPLY_URL },
       ]),
     ],
-    hashtags: ["#SubscriptionBusiness", "#BusinessModels", "#RecurringRevenue", "#Churn", "#Investing"],
+    hashtags: ["#SubscriptionBusiness", "#BusinessModels", "#RecurringRevenue", "#Churn", "#MPLY", "#Investing"],
   });
 
   // ==================================================================
@@ -343,11 +419,22 @@ async function main() {
       p(
         "Lifetime value is a forward-looking estimate built on assumptions, average retention, stable margins, that may not hold, particularly for newer businesses without enough historical data to estimate churn reliably. A lifetime value figure built on a young, unproven customer cohort carries meaningfully more uncertainty than one built on years of actual retention data from a mature customer base."
       ),
+      ...chartImage(
+        path.join(OUT, "charts", "049_churn_ltv_sensitivity.png"),
+        { widthIn: 6, caption: "Illustrative example: the same lifetime value formula from above, plotted across a range of churn rates." }
+      ),
       h2("How This Connects to MPLY's Approach"),
       p([
         run(
-          "High, durable customer lifetime value is generally a downstream signal of the same underlying characteristics the Strategy Shares Monopoly ETF's stated criteria describe, switching costs' structural drivers, brand strength, or network effects that support long, low-churn customer relationships, though lifetime value itself isn't one of the fund's named criteria. Readers can review MPLY's investment approach on the fund's "
+          "High, durable customer lifetime value is generally a downstream signal of the same underlying characteristics the Strategy Shares Monopoly ETF's ("
         ),
+        run("MPLY", { bold: true }),
+        run(
+          ") stated criteria describe, switching costs' structural drivers, brand strength, or network effects that support long, low-churn customer relationships, though lifetime value itself isn't one of the fund's named criteria. A company whose lifetime value holds up across a full economic cycle, not just during favorable conditions, is stronger evidence of the kind of durability the fund's screen is looking for than a lifetime value figure calculated from a few good quarters."
+        ),
+      ]),
+      p([
+        run("Readers can review MPLY's investment approach and current holdings on the fund's "),
         link("official page", MPLY_URL),
         run("."),
       ]),
@@ -356,7 +443,7 @@ async function main() {
         { label: "Strategy Shares Monopoly ETF official fund page", url: MPLY_URL },
       ]),
     ],
-    hashtags: ["#CustomerLifetimeValue", "#BusinessEconomics", "#Retention", "#Investing", "#Fundamentals"],
+    hashtags: ["#CustomerLifetimeValue", "#BusinessEconomics", "#Retention", "#MPLY", "#Investing", "#Fundamentals"],
   });
 
   // ==================================================================
@@ -382,16 +469,33 @@ async function main() {
       p(
         "A common mistake is projecting lifetime value from an early, unproven customer cohort while acquisition costs are already known and rising, an asymmetry that tends to make growth look more attractive than it actually is. Lifetime value assumptions deserve at least as much scrutiny as the acquisition cost figures they're being compared against, not less."
       ),
-      h2("A Brief Note on MPLY"),
-      p(
-        "This relationship is a unit-economics tool for evaluating a specific growth strategy's efficiency, not a competitive-advantage signal, and it isn't addressed in the Strategy Shares Monopoly ETF's stated screening criteria. It's useful for evaluating any company's growth spending, including MPLY holdings, but it isn't itself one of the fund's named characteristics."
+      ...chartImage(
+        path.join(OUT, "charts", "052_ltv_cac_ratio.png"),
+        { widthIn: 6, caption: "Illustrative benchmarks commonly referenced when evaluating LTV:CAC health." }
       ),
+      h2("Why Dominant Companies Often Show Stronger LTV:CAC Ratios"),
+      p([
+        run(
+          "This relationship is a unit-economics tool for evaluating a specific growth strategy's efficiency, and it isn't itself one of the Strategy Shares Monopoly ETF's ("
+        ),
+        run("MPLY", { bold: true }),
+        run(
+          ") stated screening criteria. But the two are connected in practice: a company with genuine brand dominance, network effects, or high barriers to entry, the characteristics MPLY's process screens for, typically needs to spend less to acquire each new customer, since demand arrives through reputation, word of mouth, or a lack of viable alternatives rather than paid acquisition alone. That structural advantage tends to show up as a stronger LTV:CAC ratio and a shorter payback period than a comparable business without that position."
+        ),
+      ]),
+      p([
+        run(
+          "A weak or deteriorating LTV:CAC ratio at a company that otherwise screens well on MPLY's named criteria is worth investigating further, since it can be an early sign that a supposed competitive advantage is eroding faster than the qualitative screening criteria alone would reveal. Reviewing "
+        ),
+        link("MPLY's current portfolio", MPLY_URL),
+        run(" directly is the most reliable way to check how a specific holding stacks up."),
+      ]),
       h2("Sources"),
       ...sourceBullets([
         { label: "Strategy Shares Monopoly ETF official fund page", url: MPLY_URL },
       ]),
     ],
-    hashtags: ["#CAC", "#CustomerLifetimeValue", "#UnitEconomics", "#BusinessEconomics", "#Investing"],
+    hashtags: ["#CAC", "#CustomerLifetimeValue", "#UnitEconomics", "#BusinessEconomics", "#MPLY", "#Investing"],
   });
 
   // ==================================================================
