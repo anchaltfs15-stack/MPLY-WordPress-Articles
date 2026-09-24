@@ -385,6 +385,18 @@ considered done; the outcome of that evaluation can still be "no visual
 belongs here," but skipping the evaluation itself is not acceptable. The
 goal is comprehension, engagement, and scanability, not decoration.
 
+**Cap: 1-2 new charts per 10-article batch, not 3-4.** Confirmed 2026-09-24
+after token-cost review: each chart is a full round trip (write the Python
+script, run it, read the rendered PNG back to check it, often a second pass
+to fix a label collision), and 3-4 per batch was a major cost driver
+without a proportional quality gain over 1-2 well-chosen ones. Prioritize a
+chart for the article where the visual genuinely carries information text
+can't (a real, verified data comparison, a non-obvious conceptual
+framework) over one that's merely nice-to-have. Reusing an existing chart
+across articles (see `chartImage()` calls that point at another article's
+chart file) is a good option when two articles genuinely share the same
+underlying data point — do this before building a new one.
+
 Possible visual types: editorial hero image, data chart, comparison table,
 framework diagram, process diagram, economic model, timeline, competitive-
 moat diagram, portfolio/holdings chart, flow diagram, conceptual
@@ -627,7 +639,32 @@ DOCX exists and is recorded in the tracker with the correct Set number.
 Anything unresolved → `Final QC Status: NEEDS REVIEW` with the issue explained
 in Notes, not PASS.
 
-## Batch completion check (after processing a full set)
+## Production efficiency (confirmed 2026-09-24, after a token-cost review)
+Three changes to how a batch gets verified, adopted because visual/manual
+QC steps were consuming tokens disproportionate to what they caught beyond
+the programmatic checks already in place:
+
+1. **No PDF/screenshot rendering step.** Don't convert articles to PDF and
+   read back rendered page images to visually inspect layout, chart
+   placement, or hyperlink appearance. The programmatic checks (word count,
+   em dash count, banned-phrase grep, hyperlink-count via
+   `word/_rels/document.xml.rels`, hashtags-last check, n-gram repetition
+   audit) already catch the failure modes that actually recur. Reserve a
+   visual render for a specific, concrete doubt about one file (e.g. "does
+   this chart's label actually fit"), not as a routine per-batch step.
+2. **Chart cap of 1-2 per batch** (see "Visuals" above) — fewer, more
+   load-bearing charts instead of 3-4 built and rendered every batch.
+3. **Vary CTA sentence phrasing on the first draft, not in a fix-up pass.**
+   The reused-CTA-sentence skeleton ("Readers can review MPLY's investment
+   approach on the fund's official page") got caught and fixed after the
+   fact in four batches running, each fix costing its own Read/Edit/rebuild
+   cycle across several files. Keep a mental (or literal) rotation of
+   openings while drafting instead: "MPLY's official page shows...",
+   "The fund's official page describes...", "Readers who want to check
+   this can review...", "See MPLY's [holdings/methodology/approach] on
+   its official page for...", varying which noun phrase becomes the actual
+   hyperlink each time. The repetition audit (still run every batch, across
+   the full completed set) is the backstop, not the primary defense.
 Row count in = article count out. Every row has a DOCX, every DOCX is in the
 tracker, every article has a QC status, nothing silently skipped, no duplicates,
 MPLY not force-inserted, sources recorded, no invented URLs, no em dashes
