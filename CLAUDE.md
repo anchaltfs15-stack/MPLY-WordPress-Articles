@@ -662,45 +662,39 @@ sources" above). `bullets()` stays correct for any other plain bulleted
 list (e.g. "What to Weigh Before Researching Further").
 
 ## Current status
-**2026-09-28 — 34 of 100 rows in `Production Briefs/2026-09-28_Set_01.xlsx` completed**
-(rows 1-32, plus 33 and 71), all compliant with every rule in this file
+**2026-09-28 — 44 of 100 rows in `Production Briefs/2026-09-28_Set_01.xlsx` completed**
+(rows 1-43, plus 71), all compliant with every rule in this file
 (publication-only DOCX, adequate MPLY coverage, 5-8 hashtags, hyperlinked
-Sources, archetype variety, FAQ where earned). All 34 rows are logged in
-`Production Trackers/MPLY_Article_Production.xlsx`. 66 rows remain
-unprocessed in this brief.
+Sources, archetype variety, FAQ where earned). All 44 rows are logged in
+`Production Trackers/MPLY_Article_Production.xlsx`. 56 rows remain
+unprocessed in this brief. The brief's `Content Cluster` shifted from
+"Economic Moats"/"Competitive Advantage" (rows 1-37) to "Quality Investing"
+(rows 38-43 so far) — a genuinely fresh topic area with lower overlap risk
+than the moat/competitive-advantage rows.
 
 **File naming:** `NNN` matches the brief's own `No.` column (zero-padded),
-not build order — e.g. row 13 is `013_...docx`, not `002_...docx`. The
-first 4 articles (pilot) were originally misnamed by build order and were
-renamed to match before row 2 onward was processed, to avoid filename
-collisions as the set fills in.
+not build order. The pilot's first 4 articles were originally misnamed by
+build order (001-004) and renamed to their actual row numbers (001/013/
+033/071) before row 2 onward was processed, to avoid collisions.
 
 **Chart style guide:** `Scripts/chart_style.py` (primary `#1F4E78`,
 matching the docx's own heading color) is used by every chart script since
 rows 2-11. The pilot's original 3 charts (articles 001, 013, 033) still use
 the earlier ad hoc blue (`#2E5FA3`) and haven't been restyled retroactively.
 
-**Repetition audit is a standing per-batch step, run against the full
-completed set, not just the new batch — this has been necessary every
-single batch so far.** The same reused-CTA-sentence pattern ("Readers can
-review MPLY's investment approach on the fund's official page") has
-recurred in three batches in a row (rows 2-11, 12-22, and 23-32), each time
-caught only because the 7-word n-gram audit was run across every completed
-article, not just the newest ten. Treat this as an expected step every
-batch, not a one-off fix: draft the CTA sentence with deliberate variation
-from the start where practical, but always re-run the audit before delivery
-regardless.
-
-**Topical overlap risk increases as the brief progresses**, not just within
-a batch: rows 23-32 revisited switching costs, pricing power, and moat
-identification from new but adjacent angles (mechanism-linking, margin-
-specific, practical-checklist) rather than fresh topics, and required
-deliberately different framings and non-overlapping examples (cloud
-infrastructure, airline fuel surcharges, ROIC-WACC, Sherman Act/Standard
-Oil, Porter's 1980/1985 work, Whole Foods, UPS/NYSE-Nasdaq/Intel, eBay/
-Craigslist) to avoid restating earlier articles under new titles. Check
-each new batch's titles against already-completed ones for this before
-drafting, not just after.
+**Two standing per-batch steps, confirmed necessary in every batch
+processed so far, not optional extras:**
+1. **Repetition audit against the full completed set** (not just the new
+   batch) — the same reused-CTA-sentence pattern has recurred in four
+   batches running, each time caught only by the n-gram audit.
+2. **Overlap check against already-completed titles before drafting** —
+   topical overlap increased steadily through the Economic Moats/
+   Competitive Advantage rows (1-37), requiring deliberately distinct
+   mechanisms and non-overlapping real-world examples each time (VHS/
+   Betamax, Heathrow slots, Veblen goods, Porter/Buffett/Novy-Marx
+   timeline, among others already used). Expect this to ease somewhat now
+   that the brief has moved into the Quality Investing cluster, but keep
+   checking.
 
 **Standing corrections already folded into the rules above, not repeated
 here:** the MPLY-tag-as-guidance rule (`## MPLY integration`), the
