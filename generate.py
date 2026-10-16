@@ -87,7 +87,7 @@ STRICT EDITORIAL RULES:
 7. Return strictly valid JSON conforming exactly to the requested schema with no extra commentary."""
 
 model = genai.GenerativeModel(
-    "gemini-2.5-pro",
+    "gemini-3.1-pro-preview",
     system_instruction=SYSTEM_INSTRUCTION,
     generation_config=genai.GenerationConfig(response_mime_type="application/json")
 )
