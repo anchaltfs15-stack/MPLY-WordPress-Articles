@@ -32,7 +32,9 @@ from google import genai
 from google.genai import types
 from google.genai import errors as genai_errors
 import gspread
-from google.oauth2.service_account import Credentials
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials as UserCredentials
+from google.oauth2.service_account import Credentials as ServiceAccountCredentials
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
@@ -111,7 +113,10 @@ REQUIRED_ENV_VARS = [
     "BRIEF_SHEET_ID",
     "TRACKER_SHEET_ID",
     "DRIVE_ARTICLES_FOLDER_ID",
-    "DRIVE_IMAGES_FOLDER_ID"
+    "DRIVE_IMAGES_FOLDER_ID",
+    "GOOGLE_OAUTH_CLIENT_ID",
+    "GOOGLE_OAUTH_CLIENT_SECRET",
+    "GOOGLE_OAUTH_REFRESH_TOKEN",
 ]
 
 missing_vars = [var for var in REQUIRED_ENV_VARS if not _env(var)]
@@ -125,6 +130,9 @@ BRIEF_SHEET_ID = _env("BRIEF_SHEET_ID")
 TRACKER_SHEET_ID = _env("TRACKER_SHEET_ID")
 DRIVE_ARTICLES_FOLDER_ID = _env("DRIVE_ARTICLES_FOLDER_ID")
 DRIVE_IMAGES_FOLDER_ID = _env("DRIVE_IMAGES_FOLDER_ID")
+GOOGLE_OAUTH_CLIENT_ID = _env("GOOGLE_OAUTH_CLIENT_ID")
+GOOGLE_OAUTH_CLIENT_SECRET = _env("GOOGLE_OAUTH_CLIENT_SECRET")
+GOOGLE_OAUTH_REFRESH_TOKEN = _env("GOOGLE_OAUTH_REFRESH_TOKEN")
 
 # Optional WordPress environment settings
 WP_SITE_URL = _env("WP_SITE_URL", required=False).rstrip("/")
@@ -138,14 +146,27 @@ GEMINI_MODEL = _env("GEMINI_MODEL", required=False) or "gemini-3.8-flash"
 # ==============================================================================
 # 2. CLIENT & API INITIALIZATION
 # ==============================================================================
-SCOPES = [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive"
-]
+# Sheets stay on the service account. Drive uses OAuth as a real Gmail user
+# (umstfs29@gmail.com) so uploads use that account's storage quota.
+SHEETS_SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
+DRIVE_SCOPES = ["https://www.googleapis.com/auth/drive.file"]
 
-creds = Credentials.from_service_account_info(GCP_CREDS_DICT, scopes=SCOPES)
-gc = gspread.authorize(creds)
-drive_service = build("drive", "v3", credentials=creds)
+sheets_creds = ServiceAccountCredentials.from_service_account_info(
+    GCP_CREDS_DICT, scopes=SHEETS_SCOPES
+)
+gc = gspread.authorize(sheets_creds)
+
+drive_creds = UserCredentials(
+    token=None,
+    refresh_token=GOOGLE_OAUTH_REFRESH_TOKEN,
+    token_uri="https://oauth2.googleapis.com/token",
+    client_id=GOOGLE_OAUTH_CLIENT_ID,
+    client_secret=GOOGLE_OAUTH_CLIENT_SECRET,
+    scopes=DRIVE_SCOPES,
+)
+drive_creds.refresh(Request())
+drive_service = build("drive", "v3", credentials=drive_creds)
+print("Google Drive auth: OAuth user credentials loaded.")
 
 gemini_client = genai.Client(api_key=GEMINI_API_KEY)
 
@@ -241,7 +262,7 @@ def add_hyperlink(paragraph, text, url):
 # 4. GOOGLE DRIVE UPLOADER
 # ==============================================================================
 def upload_to_drive(local_path, filename, folder_id, mime_type):
-    """Uploads a local file to a specified Google Drive folder."""
+    """Uploads a local file to a Google Drive folder owned/shared with the OAuth user."""
     file_metadata = {
         "name": filename,
         "parents": [folder_id]
@@ -250,8 +271,10 @@ def upload_to_drive(local_path, filename, folder_id, mime_type):
     uploaded = drive_service.files().create(
         body=file_metadata,
         media_body=media,
-        fields="id"
+        fields="id",
+        supportsAllDrives=True,
     ).execute()
+    print(f"Uploaded to Drive: {filename} (id={uploaded.get('id')})")
     return uploaded.get("id")
 
 # ==============================================================================
