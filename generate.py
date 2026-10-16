@@ -4,7 +4,7 @@ MPLY Automated Article Production Engine
 =========================================
 Features:
 - Google Sheets Integration: Reads briefs & logs to 24-column production tracker.
-- Gemini 2.5 Pro: Produces 850+ word institutional articles & structured chart data.
+- Gemini 3.1 Pro Preview: Produces 850+ word institutional articles & structured chart data.
 - Matplotlib: Generates custom 300 DPI bar charts.
 - Python-docx: Builds Word documents with split headers, Times New Roman fonts,
   centered images, and active single-underlined blue hyperlinks.
@@ -366,7 +366,7 @@ def run_batch(batch_size=3):
         }}
         """
 
-        print("Calling Gemini 2.5 Pro...")
+        print("Calling Gemini 3.1 Pro Preview...")
         response = model.generate_content(prompt)
         data = json.loads(response.text)
 
