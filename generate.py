@@ -77,8 +77,8 @@ WP_USERNAME = _env("WP_USERNAME", required=False)
 WP_APP_PASSWORD = _env("WP_APP_PASSWORD", required=False).replace(" ", "")
 
 # Allow overriding the model via secret/env without code changes.
-# Default to Flash: gemini-3.1-pro free-tier quota is often limit:0 for new keys.
-GEMINI_MODEL = _env("GEMINI_MODEL", required=False) or "gemini-2.5-flash"
+# New API keys are steered off older Flash/Pro IDs; Gemini returns the current name.
+GEMINI_MODEL = _env("GEMINI_MODEL", required=False) or "gemini-3.8-flash"
 
 # ==============================================================================
 # 2. CLIENT & API INITIALIZATION
