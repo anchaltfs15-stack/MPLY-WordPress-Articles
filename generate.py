@@ -27,11 +27,25 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 import docx.opc.constants
 import docx.oxml.shared
 
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 import gspread
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
+
+
+def _env(name, required=True):
+    """Read an env var and strip whitespace/quotes that break API headers."""
+    raw = os.environ.get(name)
+    if raw is None or str(raw).strip() == "":
+        if required:
+            return None
+        return ""
+    value = str(raw).strip().strip('"').strip("'")
+    # Remove BOM / zero-width chars sometimes introduced when pasting secrets
+    value = value.lstrip("\ufeff").replace("\u200b", "")
+    return value
 
 # ==============================================================================
 # 1. ENVIRONMENT CONFIGURATION & VALIDATION
@@ -45,22 +59,25 @@ REQUIRED_ENV_VARS = [
     "DRIVE_IMAGES_FOLDER_ID"
 ]
 
-missing_vars = [var for var in REQUIRED_ENV_VARS if not os.environ.get(var)]
+missing_vars = [var for var in REQUIRED_ENV_VARS if not _env(var)]
 if missing_vars:
     print(f"CRITICAL ERROR: Missing required environment variables: {', '.join(missing_vars)}")
     sys.exit(1)
 
-GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]
-GCP_CREDS_DICT = json.loads(os.environ["GOOGLE_CREDENTIALS_JSON"])
-BRIEF_SHEET_ID = os.environ["BRIEF_SHEET_ID"]
-TRACKER_SHEET_ID = os.environ["TRACKER_SHEET_ID"]
-DRIVE_ARTICLES_FOLDER_ID = os.environ["DRIVE_ARTICLES_FOLDER_ID"]
-DRIVE_IMAGES_FOLDER_ID = os.environ["DRIVE_IMAGES_FOLDER_ID"]
+GEMINI_API_KEY = _env("GEMINI_API_KEY")
+GCP_CREDS_DICT = json.loads(_env("GOOGLE_CREDENTIALS_JSON"))
+BRIEF_SHEET_ID = _env("BRIEF_SHEET_ID")
+TRACKER_SHEET_ID = _env("TRACKER_SHEET_ID")
+DRIVE_ARTICLES_FOLDER_ID = _env("DRIVE_ARTICLES_FOLDER_ID")
+DRIVE_IMAGES_FOLDER_ID = _env("DRIVE_IMAGES_FOLDER_ID")
 
 # Optional WordPress environment settings
-WP_SITE_URL = os.environ.get("WP_SITE_URL", "").rstrip("/")
-WP_USERNAME = os.environ.get("WP_USERNAME", "")
-WP_APP_PASSWORD = os.environ.get("WP_APP_PASSWORD", "").replace(" ", "")
+WP_SITE_URL = _env("WP_SITE_URL", required=False).rstrip("/")
+WP_USERNAME = _env("WP_USERNAME", required=False)
+WP_APP_PASSWORD = _env("WP_APP_PASSWORD", required=False).replace(" ", "")
+
+# Allow overriding the model via secret/env without code changes
+GEMINI_MODEL = _env("GEMINI_MODEL", required=False) or "gemini-3.1-pro-preview"
 
 # ==============================================================================
 # 2. CLIENT & API INITIALIZATION
@@ -74,7 +91,7 @@ creds = Credentials.from_service_account_info(GCP_CREDS_DICT, scopes=SCOPES)
 gc = gspread.authorize(creds)
 drive_service = build("drive", "v3", credentials=creds)
 
-genai.configure(api_key=GEMINI_API_KEY)
+gemini_client = genai.Client(api_key=GEMINI_API_KEY)
 
 SYSTEM_INSTRUCTION = """You are an elite financial journalist writing for institutional investors and family offices.
 STRICT EDITORIAL RULES:
@@ -86,10 +103,9 @@ STRICT EDITORIAL RULES:
 6. Provide clear, rigorous, multi-paragraph analysis under each section.
 7. Return strictly valid JSON conforming exactly to the requested schema with no extra commentary."""
 
-model = genai.GenerativeModel(
-    "gemini-3.1-pro-preview",
+GEMINI_CONFIG = types.GenerateContentConfig(
     system_instruction=SYSTEM_INSTRUCTION,
-    generation_config=genai.GenerationConfig(response_mime_type="application/json")
+    response_mime_type="application/json",
 )
 
 # ==============================================================================
@@ -366,8 +382,12 @@ def run_batch(batch_size=3):
         }}
         """
 
-        print("Calling Gemini 3.1 Pro Preview...")
-        response = model.generate_content(prompt)
+        print(f"Calling Gemini model: {GEMINI_MODEL}...")
+        response = gemini_client.models.generate_content(
+            model=GEMINI_MODEL,
+            contents=prompt,
+            config=GEMINI_CONFIG,
+        )
         data = json.loads(response.text)
 
         # ----------------------------------------------------------------------
