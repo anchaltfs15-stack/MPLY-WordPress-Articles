@@ -16,6 +16,7 @@ Features:
 import os
 import sys
 import json
+import time
 import requests
 from requests.auth import HTTPBasicAuth
 from datetime import datetime
@@ -29,6 +30,7 @@ import docx.oxml.shared
 
 from google import genai
 from google.genai import types
+from google.genai import errors as genai_errors
 import gspread
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
@@ -46,6 +48,59 @@ def _env(name, required=True):
     # Remove BOM / zero-width chars sometimes introduced when pasting secrets
     value = value.lstrip("\ufeff").replace("\u200b", "")
     return value
+
+
+def generate_article_json(client, model_name, prompt, config, max_attempts=6):
+    """
+    Call Gemini with retries for transient 503/429 capacity errors.
+    Falls back through a short model list if Google returns model-not-found.
+    """
+    candidates = []
+    for name in [
+        model_name,
+        "gemini-3.8-flash",
+        "gemini-2.0-flash",
+        "gemini-flash-latest",
+    ]:
+        if name and name not in candidates:
+            candidates.append(name)
+
+    last_error = None
+    for candidate in candidates:
+        for attempt in range(1, max_attempts + 1):
+            try:
+                print(f"Calling Gemini model: {candidate} (attempt {attempt}/{max_attempts})...")
+                response = client.models.generate_content(
+                    model=candidate,
+                    contents=prompt,
+                    config=config,
+                )
+                return json.loads(response.text)
+            except genai_errors.ClientError as exc:
+                last_error = exc
+                message = str(exc)
+                # Permanent for this model id — try next candidate
+                if "404" in message or "NOT_FOUND" in message or "no longer available" in message:
+                    print(f"Model unavailable: {candidate} -> {message}")
+                    break
+                # Quota / rate limit — wait and retry same model
+                if "429" in message or "RESOURCE_EXHAUSTED" in message:
+                    wait_s = min(60, 5 * attempt)
+                    print(f"Quota/rate limit on {candidate}. Waiting {wait_s}s...")
+                    time.sleep(wait_s)
+                    continue
+                raise
+            except genai_errors.ServerError as exc:
+                last_error = exc
+                message = str(exc)
+                # High demand / temporary outage
+                if "503" in message or "UNAVAILABLE" in message or "high demand" in message.lower():
+                    wait_s = min(90, 10 * attempt)
+                    print(f"Gemini high demand (503). Waiting {wait_s}s before retry...")
+                    time.sleep(wait_s)
+                    continue
+                raise
+    raise RuntimeError(f"Gemini generation failed after retries/fallbacks: {last_error}")
 
 # ==============================================================================
 # 1. ENVIRONMENT CONFIGURATION & VALIDATION
@@ -383,13 +438,12 @@ def run_batch(batch_size=3):
         }}
         """
 
-        print(f"Calling Gemini model: {GEMINI_MODEL}...")
-        response = gemini_client.models.generate_content(
-            model=GEMINI_MODEL,
-            contents=prompt,
-            config=GEMINI_CONFIG,
+        data = generate_article_json(
+            gemini_client,
+            GEMINI_MODEL,
+            prompt,
+            GEMINI_CONFIG,
         )
-        data = json.loads(response.text)
 
         # ----------------------------------------------------------------------
         # A. Render 300 DPI Matplotlib Chart
