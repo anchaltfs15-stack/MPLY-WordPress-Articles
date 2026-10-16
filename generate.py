@@ -76,8 +76,9 @@ WP_SITE_URL = _env("WP_SITE_URL", required=False).rstrip("/")
 WP_USERNAME = _env("WP_USERNAME", required=False)
 WP_APP_PASSWORD = _env("WP_APP_PASSWORD", required=False).replace(" ", "")
 
-# Allow overriding the model via secret/env without code changes
-GEMINI_MODEL = _env("GEMINI_MODEL", required=False) or "gemini-3.1-pro-preview"
+# Allow overriding the model via secret/env without code changes.
+# Default to Flash: gemini-3.1-pro free-tier quota is often limit:0 for new keys.
+GEMINI_MODEL = _env("GEMINI_MODEL", required=False) or "gemini-2.5-flash"
 
 # ==============================================================================
 # 2. CLIENT & API INITIALIZATION
