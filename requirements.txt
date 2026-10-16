@@ -1,0 +1,9 @@
+pandas
+openpyxl
+python-docx
+matplotlib
+google-generativeai
+gspread
+google-api-python-client
+google-auth
+requests

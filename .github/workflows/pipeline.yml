@@ -1,221 +1,29 @@
-1 april
-suhani 1.15 march	april 1.25 133
-priyanshu 1 1.15	131
-
-3 april
-shehzad 1 	1.15	144
-KRUPA 1 	1.15	141
-bhumin 1	1.15	129
-	
-	
-*********Suhani**************
-UPDATE task_work_tracker twt
-JOIN task t ON t.task_id = twt.task_id
-SET 
-    twt.actual_target = t.task_target,
-    twt.tenure_target = ROUND(t.task_target * 1.15, 2)
-WHERE 
-    twt.user_id = 133
-    AND twt.date <= '2024-03-31'
-    AND t.task_target IS NOT NULL;
-	
-	
-*********shehzad**************
-UPDATE task_work_tracker twt
-JOIN task t ON t.task_id = twt.task_id
-SET 
-    twt.actual_target = t.task_target,
-    twt.tenure_target = ROUND(t.task_target * 1, 2)
-WHERE 
-    twt.user_id = 144
-    AND twt.date <= '2024-03-31'
-    AND t.task_target IS NOT NULL;
-
-
-*********priyanshu**************
-UPDATE task_work_tracker twt
-JOIN task t ON t.task_id = twt.task_id
-SET 
-    twt.actual_target = t.task_target,
-    twt.tenure_target = ROUND(t.task_target * 1, 2)
-WHERE 
-    twt.user_id = 131
-    AND twt.date <= '2024-03-31'
-    AND t.task_target IS NOT NULL;
-
-
-*********krupa**************
-UPDATE task_work_tracker twt
-JOIN task t ON t.task_id = twt.task_id
-SET 
-    twt.actual_target = t.task_target,
-    twt.tenure_target = ROUND(t.task_target * 1, 2)
-WHERE 
-    twt.user_id = 141
-    AND twt.date_time < '2026-04-01'
-    AND t.task_target IS NOT NULL;
-
-*********bhumin**************
-UPDATE task_work_tracker twt
-JOIN task t ON t.task_id = twt.task_id
-SET 
-    twt.actual_target = t.task_target,
-    twt.tenure_target = ROUND(t.task_target * 1, 2)
-WHERE 
-    twt.user_id = 129
-    AND twt.date <= '2024-03-31'
-    AND t.task_target IS NOT NULL;
-
-
-***krupa***********
-UPDATE task_work_tracker twt
-JOIN task t ON t.task_id = twt.task_id
-SET 
-    twt.actual_target = t.task_target,
-    twt.tenure_target = @tt := ROUND(t.task_target * 1, 2),
-    twt.billable_hours = 
-        CASE 
-            WHEN @tt > 0 THEN ROUND(twt.production / @tt, 2)
-            ELSE 0
-        END
-WHERE 
-    twt.user_id = 141
-    AND twt.date_time < '2026-04-03'
-    AND t.task_target IS NOT NULL
-	
-******suhani**********
-UPDATE task_work_tracker twt
-JOIN task t ON t.task_id = twt.task_id
-SET 
-    twt.actual_target = t.task_target,
-    twt.tenure_target = @tt := ROUND(t.task_target * 1.15, 2),
-    twt.billable_hours = 
-        CASE 
-            WHEN @tt > 0 THEN ROUND(twt.production / @tt, 2)
-            ELSE 0
-        END
-WHERE 
-    twt.user_id = 133
-    AND twt.date_time < '2026-04-01'
-    AND t.task_target IS NOT NULL
-	
-**************priyanshu ******
-UPDATE task_work_tracker twt
-JOIN task t ON t.task_id = twt.task_id
-SET 
-    twt.actual_target = t.task_target,
-    twt.tenure_target = @tt := ROUND(t.task_target * 1.15, 2),
-    twt.billable_hours = 
-        CASE 
-            WHEN @tt > 0 THEN ROUND(twt.production / @tt, 2)
-            ELSE 0
-        END
-WHERE 
-    twt.user_id = 131
-    AND twt.date_time < '2026-04-01'
-    AND t.task_target IS NOT NULL
-	
-
-**************shehzad**************
-UPDATE task_work_tracker twt
-JOIN task t ON t.task_id = twt.task_id
-SET 
-    twt.actual_target = t.task_target,
-    twt.tenure_target = @tt := ROUND(t.task_target * 1, 2),
-    twt.billable_hours = 
-        CASE 
-            WHEN @tt > 0 THEN ROUND(twt.production / @tt, 2)
-            ELSE 0
-        END
-WHERE 
-    twt.user_id = 144
-    AND twt.date_time < '2026-04-03'
-    AND t.task_target IS NOT NULL
-	
-***********Bhumin
-UPDATE task_work_tracker twt
-JOIN task t ON t.task_id = twt.task_id
-SET 
-    twt.actual_target = t.task_target,
-    twt.tenure_target = @tt := ROUND(t.task_target * 1, 2),
-    twt.billable_hours = 
-        CASE 
-            WHEN @tt > 0 THEN ROUND(twt.production / @tt, 2)
-            ELSE 0
-        END
-WHERE 
-    twt.user_id = 129
-    AND twt.date_time < '2026-04-03'
-    AND t.task_target IS NOT NULL
-	
-***********************************
-
-UPDATE task_work_tracker twt
-JOIN task t ON t.task_id = twt.task_id
-JOIN tfs_user u ON u.user_id = twt.user_id
-SET 
-    twt.actual_target = t.task_target,
-    twt.tenure_target = @tt := ROUND(t.task_target * u.user_tenure, 2),
-    twt.billable_hours = 
-        CASE 
-            WHEN @tt > 0 THEN ROUND(twt.production / @tt, 2)
-            ELSE 0
-        END
-WHERE 
-    twt.user_id NOT IN (129,144,131,133,141) 
-    AND twt.date_time < '2026-04-01'         
-    AND t.task_target IS NOT NULL
-    AND u.user_tenure IS NOT NULL
-    AND u.user_tenure > 0;
-
-
-
-
-
-
-
-
-
-
-
-
-
-UPDATE task_work_tracker twt
-JOIN task t ON t.task_id = twt.task_id
-JOIN tfs_user u ON u.user_id = twt.user_id
-SET 
-    twt.actual_target = t.task_target,
-    twt.tenure_target = ROUND(t.task_target * 1.25, 2),
-    twt.billable_hours = 
-        CASE 
-            WHEN t.task_target * 1.25 > 0 
-            THEN ROUND(twt.production / (t.task_target * 1.25), 2)
-            ELSE 0
-        END
-WHERE 
-    twt.user_id = 133
-    AND twt.date_time >= '2026-04-01'
-    AND twt.task_id = 6             
-    AND t.task_target IS NOT NULL
-    AND u.user_tenure IS NOT NULL
-    AND u.user_tenure > 0;
-
-
-UPDATE task_work_tracker twt
-JOIN task t ON t.task_id = twt.task_id
-JOIN tfs_user u ON u.user_id = twt.user_id
-SET 
-    twt.actual_target = t.task_target,
-    twt.tenure_target = ROUND(t.task_target * 1.15, 2),
-    twt.billable_hours = 
-        CASE 
-            WHEN t.task_target * 1.15 > 0 
-            THEN ROUND(twt.production / (t.task_target * 1.15), 2)
-            ELSE 0
-        END
-WHERE 
-    twt.user_id = 133
-    AND DATE(twt.date_time) BETWEEN '2026-04-01' AND '2026-04-16'             
-    AND t.task_target IS NOT NULL
-    AND u.user_tenure IS NOT NULL
-    AND u.user_tenure > 0;
+name: MPLY Article Production Pipeline
+on:
+  schedule:
+    - cron: '0 2 * * *' # Runs daily at 2:00 AM UTC
+  workflow_dispatch:    # Allows manual 1-click trigger by Production Team
+jobs:
+  produce-articles:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+      - name: Run Production Script
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          BRIEF_SHEET_ID: ${{ secrets.BRIEF_SHEET_ID }}
+          TRACKER_SHEET_ID: ${{ secrets.TRACKER_SHEET_ID }}
+          DRIVE_ARTICLES_FOLDER_ID: ${{ secrets.DRIVE_ARTICLES_FOLDER_ID }}
+          DRIVE_IMAGES_FOLDER_ID: ${{ secrets.DRIVE_IMAGES_FOLDER_ID }}
+          WP_SITE_URL: ${{ secrets.WP_SITE_URL }}
+          WP_USERNAME: ${{ secrets.WP_USERNAME }}
+          WP_APP_PASSWORD: ${{ secrets.WP_APP_PASSWORD }}
+        run: python generate.py
